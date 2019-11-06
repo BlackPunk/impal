@@ -1,5 +1,5 @@
 <div id="users">
-    <h1><img src="<?= base_url('assets/imgs/admin-user.png') ?>" class="header-img" style="margin-top:-3px;"> Admin Users</h1>
+    <h1><img src="<?= base_url('assets/imgs/admin-user.png') ?>" class="header-img" style="margin-top:-3px;"> Admin</h1>
     <hr>
     <?php if (validation_errors()) { ?>
         <hr>
@@ -35,9 +35,9 @@
                         <th>Username</th>
                         <th>Password</th>
                         <th>Email</th>
-                        <th>Notifications</th>
-                        <th>Last login</th>
-                        <th class="text-center">Action</th>
+                        <th>Pemberitahuan</th>
+                        <th>Login Terakhir</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <?php foreach ($users->result() as $user) { ?>
@@ -50,7 +50,7 @@
                         <td><?= date('d.m.Y - H:i:s', $user->last_login) ?></td>
                         <td class="text-center">
                             <div>
-                                <a href="?delete=<?= $user->id ?>" class="confirm-delete">Delete</a>
+                                <a href="?delete=<?= $user->id ?>" class="confirm-delete">Hapus</a>
                                 <a href="?edit=<?= $user->id ?>">Edit</a>
                             </div>
                         </td>
@@ -61,7 +61,7 @@
     <?php } else { ?>
         <div class="clearfix"></div>
         <hr>
-        <div class="alert alert-info">No users found!</div>
+        <div class="alert alert-info">Tidak ada pengguna yang ditemukan!</div>
     <?php } ?>
 
     <!-- add edit users -->
@@ -71,7 +71,7 @@
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add Administrator</h4>
+                        <h4 class="modal-title" id="myModalLabel">Tambah admin</h4>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="edit" value="<?= isset($_GET['edit']) ? $_GET['edit'] : '0' ?>">
@@ -88,13 +88,13 @@
                             <input type="text" name="email" class="form-control" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" id="email">
                         </div>
                         <div class="form-group">
-                            <label for="notify">Notifications</label>
-                            <input type="text" name="notify" class="form-control" value="<?= isset($_POST['notify']) ? $_POST['notify'] : '' ?>" placeholder="Get notifications by email: 1 / 0 (yes or no)" id="notify">
+                            <label for="notify">Pemberitahuan</label>
+                            <input type="text" name="notify" class="form-control" value="<?= isset($_POST['notify']) ? $_POST['notify'] : '' ?>" placeholder="Dapatkan pemberitahuan melalui email: 1 / 0 (ya atau tidak)" id="notify">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <input type="submit" class="btn btn-primary" value="Save">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                        <input type="submit" class="btn btn-primary" value="Simpan">
                     </div>
                 </form>
             </div>

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <div class="container" id="checkout-page">
     <?php
@@ -13,28 +13,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span><?= lang('checkout') ?></span>
                     </div>
                     <?php
-                    if ($this->session->flashdata('submit_error')) {
-                        ?>
+                        if ($this->session->flashdata('submit_error')) {
+                            ?>
                         <hr>
                         <div class="alert alert-danger">
                             <h4><span class="glyphicon glyphicon-alert"></span> <?= lang('finded_errors') ?></h4>
                             <?php
-                            foreach ($this->session->flashdata('submit_error') as $error) {
-                                echo $error . '<br>';
-                            }
-                            ?>
+                                    foreach ($this->session->flashdata('submit_error') as $error) {
+                                        echo $error . '<br>';
+                                    }
+                                    ?>
                         </div>
                         <hr>
-                        <?php
-                    }
-                    ?>
+                    <?php
+                        }
+                        ?>
                     <div class="payment-type-box">
                         <select class="selectpicker payment-type" data-style="btn-blue" name="payment_type">
                             <?php if ($cashondelivery_visibility == 1) { ?>
                                 <option value="cashOnDelivery"><?= lang('cash_on_delivery') ?> </option>
-                            <?php } if (filter_var($paypal_email, FILTER_VALIDATE_EMAIL)) { ?>
+                            <?php }
+                                if (filter_var($paypal_email, FILTER_VALIDATE_EMAIL)) { ?>
                                 <option value="PayPal"><?= lang('paypal') ?> </option>
-                            <?php } if ($bank_account['iban'] != null) { ?>
+                            <?php }
+                                if ($bank_account['iban'] != null) { ?>
                                 <option value="Bank"><?= lang('bank_payment') ?> </option>
                             <?php } ?>
                         </select>
@@ -115,14 +117,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <span class="glyphicon glyphicon-minus"></span>
                                             </a>
                                         </td>
-                                        <td><?= $item['price'] . CURRENCY ?></td>
-                                        <td><?= $item['sum_price'] . CURRENCY ?></td>
+                                        <td><?= CURRENCY . ' ' . $item['price'] ?></td>
+                                        <td><?= CURRENCY . ' ' . $item['sum_price'] ?></td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
                                     <td colspan="4" class="text-right"><?= lang('total') ?></td>
                                     <td>
-                                        <span class="final-amount"><?= $cartItems['finalSum'] ?></span><?= CURRENCY ?>
+                                        <span class="final-amount"><?= CURRENCY . ' ' . $cartItems['finalSum'] ?></span>
                                         <input type="hidden" class="final-amount" name="final_amount" value="<?= $cartItems['finalSum'] ?>">
                                         <input type="hidden" name="amount_currency" value="<?= CURRENCY ?>">
                                         <input type="hidden" name="discountAmount" value="">
@@ -138,13 +140,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?= lang('back_to_shop') ?>
                     </a>
                     <a href="javascript:void(0);" class="btn btn-primary go-order" onclick="document.getElementById('goOrder').submit();" class="pull-left">
-                        <?= lang('custom_order') ?> 
+                        <?= lang('custom_order') ?>
                         <span class="glyphicon glyphicon-circle-arrow-right"></span>
                     </a>
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <div class="col-sm-3"> 
+            <div class="col-sm-3">
                 <div class="filter-sidebar">
                     <div class="title">
                         <span><?= lang('best_sellers') ?></span>
@@ -154,21 +156,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-    </div>
+</div>
 <?php } else { ?>
     <div class="alert alert-info"><?= lang('no_products_in_cart') ?></div>
-    <?php
+<?php
 }
 if ($this->session->flashdata('deleted')) {
     ?>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             ShowNotificator('alert-info', '<?= $this->session->flashdata('deleted') ?>');
         });
     </script>
-<?php } if ($codeDiscounts == 1 && isset($_POST['discountCode'])) { ?>
+<?php }
+if ($codeDiscounts == 1 && isset($_POST['discountCode'])) { ?>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             checkDiscountCode();
         });
     </script>

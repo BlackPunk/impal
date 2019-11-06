@@ -4,14 +4,14 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/elFinder-2.1.38/css/theme.css'); ?>">
 <script src="<?= base_url('assets/elFinder-2.1.38/js/elfinder.min.js') ?>"></script>
 <script type="text/javascript" charset="utf-8">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#elfinder').elfinder({
             url: '<?= base_url('assets/elFinder-2.1.38/php/connector.minimal.php'); ?>'
         });
     });
 </script>
 <h1><img src="<?= base_url('assets/imgs/filemanager.png') ?>" class="header-img"> File Manager</h1>
-<p>Here you can list all site files</p>
+<p>Disini anda dapat memanage file dalam situs</p>
 <hr>
-<div class="alert alert-danger">Danger zone! Do not touch if you're not sure!</div>
+<div class="alert alert-danger">Zona bahaya! Jangan menyentuh jika Anda tidak yakin!</div>
 <div id="elfinder"></div>

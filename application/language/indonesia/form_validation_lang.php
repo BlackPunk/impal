@@ -1,3 +1,2 @@
-<?php
-
-$lang['required'] = 'Required fields';
+<?php 
+$lang['required'] = 'Bidang wajib diisi';

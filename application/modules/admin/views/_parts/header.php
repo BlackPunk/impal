@@ -32,25 +32,25 @@
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="<?= base_url('admin') ?>"><i class="fa fa-home"></i> Home</a></li>
-                            <li><a href="<?= base_url() ?>" target="_blank"><i class="glyphicon glyphicon-star"></i> Production</a></li>
+                            <li><a href="<?= base_url('admin') ?>"><i class="fa fa-home"></i> Beranda</a></li>
+                            <li><a href="<?= base_url() ?>" target="_blank"><i class="glyphicon glyphicon-star"></i> Toko</a></li>
                             <li>
-                                <a href="javascript:void(0);" class="h-settings"><i class="fa fa-key" aria-hidden="true"></i> Pass Change</a>
+                                <a href="javascript:void(0);" class="h-settings"><i class="fa fa-key" aria-hidden="true"></i> Ubah Kata Sandi</a>
                                 <div class="relative">
                                     <div class="settings">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading">
-                                                <div class="panel-title">Security</div>
+                                                <div class="panel-title">Keamanan</div>
                                             </div>
                                             <div class="panel-body">
-                                                <label>Change my password</label> <span class="bg-success" id="pass_result">Changed!</span>
+                                                <label>Ubah kata sandi Saya</label> <span class="bg-success" id="pass_result">Telah diubah!</span>
                                                 <form class="form-inline" role="form">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control new-pass-field" placeholder="New password" name="new_pass">
+                                                        <input type="text" class="form-control new-pass-field" placeholder="Kata sandi baru" name="new_pass">
                                                     </div>
                                                     <a href="javascript:void(0);" onclick="changePass()" class="btn btn-sm btn-primary">Update</a>
                                                     <hr>
-                                                    <span>Password Strength:</span>
+                                                    <span>Kekuatan Kata Sandi:</span>
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
                                                         </div>
@@ -62,10 +62,10 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#modalCalculator"><i class="fa fa-calculator" aria-hidden="true"></i> Calculator</a></li>
+                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#modalCalculator"><i class="fa fa-calculator" aria-hidden="true"></i> Kalkulator</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="<?= base_url('admin/logout') ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            <li><a href="<?= base_url('admin/logout') ?>"><i class="fa fa-sign-out"></i> Keluar</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -91,7 +91,7 @@
                                     <div class="input-group custom-search-form">
                                         <form method="GET" action="<?= base_url('admin/products') ?>">
                                             <div class="input-group">
-                                                <input class="form-control" name="search_title" value="<?= isset($_GET['search_title']) ? $_GET['search_title'] : '' ?>" type="text" placeholder="Search in products...">
+                                                <input class="form-control" name="search_title" value="<?= isset($_GET['search_title']) ? $_GET['search_title'] : '' ?>" type="text" placeholder="Cari Produk...">
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-default" value="" placeholder="Find product.." type="submit">
                                                         <i class="fa fa-search"></i>
@@ -101,26 +101,26 @@
                                         </form>
                                     </div>
                                 </li>
-                                <li class="header">ECOMMERCE</li>
-                                <li><a href="<?= base_url('admin/publish') ?>" <?= urldecode(uri_string()) == 'admin/publish' ? 'class="active"' : '' ?>><i class="fa fa-edit" aria-hidden="true"></i> Publish product</a></li>
-                                <li><a href="<?= base_url('admin/products') ?>" <?= urldecode(uri_string()) == 'admin/products' ? 'class="active"' : '' ?>><i class="fa fa-files-o" aria-hidden="true"></i> Products</a></li>
+                                <li class="header">Bukes</li>
+                                <li><a href="<?= base_url('admin/publish') ?>" <?= urldecode(uri_string()) == 'admin/publish' ? 'class="active"' : '' ?>><i class="fa fa-edit" aria-hidden="true"></i> Terbitkan Produk</a></li>
+                                <li><a href="<?= base_url('admin/products') ?>" <?= urldecode(uri_string()) == 'admin/products' ? 'class="active"' : '' ?>><i class="fa fa-files-o" aria-hidden="true"></i> Daftar Produk</a></li>
                                 <?php if ($showBrands == 1) { ?>
                                     <li><a href="<?= base_url('admin/brands') ?>" <?= urldecode(uri_string()) == 'admin/brands' ? 'class="active"' : '' ?>><i class="fa fa-registered" aria-hidden="true"></i> Brands</a></li>
                                 <?php } ?>
-                                <li><a href="<?= base_url('admin/shopcategories') ?>" <?= urldecode(uri_string()) == 'admin/shopcategories' ? 'class="active"' : '' ?>><i class="fa fa-list-alt" aria-hidden="true"></i> Shop Categories</a></li>
+                                <li><a href="<?= base_url('admin/shopcategories') ?>" <?= urldecode(uri_string()) == 'admin/shopcategories' ? 'class="active"' : '' ?>><i class="fa fa-list-alt" aria-hidden="true"></i> Kategori Produk</a></li>
                                 <li>
                                     <a href="<?= base_url('admin/orders') ?>" <?= urldecode(uri_string()) == 'admin/orders' ? 'class="active"' : '' ?>>
-                                        <i class="fa fa-money" aria-hidden="true"></i> Orders
+                                        <i class="fa fa-money" aria-hidden="true"></i> Daftar Pesanan
                                         <?php if ($numNotPreviewOrders > 0) { ?>
                                             <img src="<?= base_url('assets/imgs/exlamation-hi.png') ?>" style="position: absolute; right:10px; top:7px;" alt="">
                                         <?php } ?>
                                     </a>
                                 </li>
-                                <li><a href="<?= base_url('admin/discounts') ?>" <?= urldecode(uri_string()) == 'admin/discounts' ? 'class="active"' : '' ?>><i class="fa fa-percent" aria-hidden="true"></i> Discount Codes</a></li>
+                                <li><a href="<?= base_url('admin/discounts') ?>" <?= urldecode(uri_string()) == 'admin/discounts' ? 'class="active"' : '' ?>><i class="fa fa-percent" aria-hidden="true"></i> Kode Diskon</a></li>
                                 <?php if (in_array('blog', $activePages)) { ?>
                                     <li class="header">BLOG</li>
-                                    <li><a href="<?= base_url('admin/blogpublish') ?>" <?= urldecode(uri_string()) == 'admin/blogpublish' ? 'class="active"' : '' ?>><i class="fa fa-edit" aria-hidden="true"></i> Publish post</a></li>
-                                    <li><a href="<?= base_url('admin/blog') ?>" <?= urldecode(uri_string()) == 'admin/blog' ? 'class="active"' : '' ?>><i class="fa fa-th" aria-hidden="true"></i> Posts</a></li>
+                                    <li><a href="<?= base_url('admin/blogpublish') ?>" <?= urldecode(uri_string()) == 'admin/blogpublish' ? 'class="active"' : '' ?>><i class="fa fa-edit" aria-hidden="true"></i> Terbitkan postingan</a></li>
+                                    <li><a href="<?= base_url('admin/blog') ?>" <?= urldecode(uri_string()) == 'admin/blog' ? 'class="active"' : '' ?>><i class="fa fa-th" aria-hidden="true"></i> Daftar Postingan</a></li>
                                 <?php } ?>
                                 <?php
                                     if (!empty($textualPages)) {
@@ -137,18 +137,18 @@
                                         }
                                     }
                                     ?>
-                                <li class="header">SETTINGS</li>
-                                <li><a href="<?= base_url('admin/settings') ?>" <?= urldecode(uri_string()) == 'admin/settings' ? 'class="active"' : '' ?>><i class="fa fa-wrench" aria-hidden="true"></i> Settings</a></li>
-                                <li><a href="<?= base_url('admin/styling') ?>" <?= urldecode(uri_string()) == 'admin/styling' ? 'class="active"' : '' ?>><i class="fa fa-laptop" aria-hidden="true"></i> Styling</a></li>
+                                <li class="header">Pengaturan</li>
+                                <li><a href="<?= base_url('admin/settings') ?>" <?= urldecode(uri_string()) == 'admin/settings' ? 'class="active"' : '' ?>><i class="fa fa-wrench" aria-hidden="true"></i> Pengaturan</a></li>
+                                <li><a href="<?= base_url('admin/styling') ?>" <?= urldecode(uri_string()) == 'admin/styling' ? 'class="active"' : '' ?>><i class="fa fa-laptop" aria-hidden="true"></i> Tampilan</a></li>
                                 <li><a href="<?= base_url('admin/templates') ?>" <?= urldecode(uri_string()) == 'admin/templates' ? 'class="active"' : '' ?>><i class="fa fa-binoculars" aria-hidden="true"></i> Templates</a></li>
-                                <li><a href="<?= base_url('admin/titles') ?>" <?= urldecode(uri_string()) == 'admin/titles' ? 'class="active"' : '' ?>><i class="fa fa-font" aria-hidden="true"></i> Titles / Descriptions</a></li>
-                                <li><a href="<?= base_url('admin/pages') ?>" <?= urldecode(uri_string()) == 'admin/pages' ? 'class="active"' : '' ?>><i class="fa fa-file" aria-hidden="true"></i> Active Pages</a></li>
-                                <li><a href="<?= base_url('admin/emails') ?>" <?= urldecode(uri_string()) == 'admin/emails' ? 'class="active"' : '' ?>><i class="fa fa-envelope-o" aria-hidden="true"></i> Subscribed Emails</a></li>
-                                <li><a href="<?= base_url('admin/history') ?>" <?= urldecode(uri_string()) == 'admin/history' ? 'class="active"' : '' ?>><i class="fa fa-history" aria-hidden="true"></i> Activity History</a></li>
-                                <li class="header">ADVANCED SETTINGS</li>
-                                <li><a href="<?= base_url('admin/languages') ?>" <?= urldecode(uri_string()) == 'admin/languages' ? 'class="active"' : '' ?>><i class="fa fa-globe" aria-hidden="true"></i> Languages</a></li>
+                                <li><a href="<?= base_url('admin/titles') ?>" <?= urldecode(uri_string()) == 'admin/titles' ? 'class="active"' : '' ?>><i class="fa fa-font" aria-hidden="true"></i> Judul / Deskripsi</a></li>
+                                <li><a href="<?= base_url('admin/pages') ?>" <?= urldecode(uri_string()) == 'admin/pages' ? 'class="active"' : '' ?>><i class="fa fa-file" aria-hidden="true"></i> Daftar Halaman</a></li>
+                                <li><a href="<?= base_url('admin/emails') ?>" <?= urldecode(uri_string()) == 'admin/emails' ? 'class="active"' : '' ?>><i class="fa fa-envelope-o" aria-hidden="true"></i> Daftar email subcriber</a></li>
+                                <li><a href="<?= base_url('admin/history') ?>" <?= urldecode(uri_string()) == 'admin/history' ? 'class="active"' : '' ?>><i class="fa fa-history" aria-hidden="true"></i> Histori aktivitas</a></li>
+                                <li class="header">PENGATURAN LANJUTAN</li>
+                                <li><a href="<?= base_url('admin/languages') ?>" <?= urldecode(uri_string()) == 'admin/languages' ? 'class="active"' : '' ?>><i class="fa fa-globe" aria-hidden="true"></i> Bahasa</a></li>
                                 <li><a href="<?= base_url('admin/filemanager') ?>" <?= urldecode(uri_string()) == 'admin/filemanager' ? 'class="active"' : '' ?>><i class="fa fa-file-code-o" aria-hidden="true"></i> File Manager</a></li>
-                                <li><a href="<?= base_url('admin/adminusers') ?>" <?= urldecode(uri_string()) == 'admin/adminusers' ? 'class="active"' : '' ?>><i class="fa fa-user" aria-hidden="true"></i> Admin Users</a></li>
+                                <li><a href="<?= base_url('admin/adminusers') ?>" <?= urldecode(uri_string()) == 'admin/adminusers' ? 'class="active"' : '' ?>><i class="fa fa-user" aria-hidden="true"></i> Admin</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
