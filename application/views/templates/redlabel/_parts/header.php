@@ -61,7 +61,7 @@
                     </div>
                 </div>
             <?php } ?>
-            <div id="languages-bar">
+            <!-- <div id="languages-bar">
                 <div class="container">
                     <?php
                     $num_langs = count($allLanguages);
@@ -93,7 +93,7 @@
                         ?>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div id="top-part">
                 <div class="container">
                     <div class="row">

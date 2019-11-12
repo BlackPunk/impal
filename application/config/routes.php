@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
   | -------------------------------------------------------------------------
@@ -92,10 +92,6 @@ $route['(\w{2})/blog/(:any)_(:num)'] = "blog/viewPost/$3";
 // Shopping cart page
 $route['shopping-cart'] = "ShoppingCartPage";
 $route['(\w{2})/shopping-cart'] = "ShoppingCartPage";
-
-// Shop page (greenlabel template)
-$route['shop'] = "home/shop";
-$route['(\w{2})/shop'] = "home/shop";
 
 // Textual Pages links
 $route['page/(:any)'] = "page/index/$1";
@@ -219,10 +215,10 @@ $route['admin/loadOthersImages'] = "admin/ecommerce/publish/loadOthersImages";
   | Sample REST API Routes
   | -------------------------------------------------------------------------
  */
-$route['api/products/(\w{2})/get'] = 'Api/Products/all/$1';
-$route['api/product/(\w{2})/(:num)/get'] = 'Api/Products/one/$1/$2';
-$route['api/product/set'] = 'Api/Products/set';
-$route['api/product/(\w{2})/delete'] = 'Api/Products/productDel/$1';
+// $route['api/products/(\w{2})/get'] = 'Api/Products/all/$1';
+// $route['api/product/(\w{2})/(:num)/get'] = 'Api/Products/one/$1/$2';
+// $route['api/product/set'] = 'Api/Products/set';
+// $route['api/product/(\w{2})/delete'] = 'Api/Products/productDel/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
