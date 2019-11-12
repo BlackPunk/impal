@@ -1,65 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-if (count($sliderProducts) > 0) {
-    ?>
-    <div id="home-slider" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <?php
-            $i = 0;
-            while ($i < count($sliderProducts)) {
-                ?>
-                <li data-target="#home-slider" data-slide-to="0" class="<?= $i == 0 ? 'active' : '' ?>"></li>
-                <?php
-                $i++;
-            }
-            ?>
-        </ol>
-        <div class="container">
-            <div class="carousel-inner" role="listbox">
-                <?php
-                $i = 0;
-                foreach ($sliderProducts as $article) {
-                    ?>
-                    <div class="item <?= $i == 0 ? 'active' : '' ?>">
-                        <div class="row">
-                            <div class="col-sm-6 left-side">
-                                <a href="<?= LANG_URL . '/' . $article['url'] ?>">
-                                    <img src="<?= base_url('attachments/shop_images/' . $article['image']) ?>" class="img-responsive" alt="">
-                                </a>
-                            </div>
-                            <div class="col-sm-6 right-side">
-                                <h3 class="text-right">
-                                    <a href="<?= LANG_URL . '/' . $article['url'] ?>">
-                                        <?= character_limiter($article['title'], 100) ?>
-                                    </a>
-                                </h3>
-                                <div class="description text-right">
-                                    <?= character_limiter(strip_tags($article['basic_description']), 150) ?>
-                                </div>
-                                <div class="price text-right"><?= $article['price'] . CURRENCY ?></div>
-                                <div class="xs-center">
-                                    <a class="option add-to-cart" data-goto="<?= base_url('checkout') ?>" href="javascript:void(0);" data-id="<?= $article['id'] ?>">
-                                        <img src="<?= base_url('template/imgs/shopping-cart-icon-515.png') ?>" alt="">
-                                        <?= lang('buy_now') ?>
-                                    </a>
-                                    <a class="option right-5" href="<?= LANG_URL . '/' . $article['url'] ?>">
-                                        <img src="<?= base_url('template/imgs/info.png') ?>" alt="">
-                                        <?= lang('details') ?>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                    $i++;
-                }
-                ?>
-            </div>
-        </div>
-        <a class="left carousel-control" href="#home-slider" role="button" data-slide="prev"></a>
-        <a class="right carousel-control" href="#home-slider" role="button" data-slide="next"></a>
-    </div>
-<?php } ?>
+<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <div class="container" id="home-page">
     <div class="row">
         <div class="col-md-3">
@@ -82,15 +21,15 @@ if (count($sliderProducts) > 0) {
                         ?>
                         <ul class="<?= $is_recursion === true ? 'children' : 'parent' ?>">
                             <?php
-                            foreach ($pages as $page) {
-                                $children = false;
-                                if (isset($page['children']) && !empty($page['children'])) {
-                                    $children = true;
-                                }
-                                ?>
+                                foreach ($pages as $page) {
+                                    $children = false;
+                                    if (isset($page['children']) && !empty($page['children'])) {
+                                        $children = true;
+                                    }
+                                    ?>
                                 <li>
                                     <?php if ($children === true) {
-                                        ?>
+                                                ?>
                                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                     <?php } else { ?>
                                         <i class="fa fa-circle-o" aria-hidden="true"></i>
@@ -99,21 +38,21 @@ if (count($sliderProducts) > 0) {
                                         <?= $page['name'] ?>
                                     </a>
                                     <?php
-                                    if ($children === true) {
-                                        loop_tree($page['children'], true);
-                                    } else {
-                                        ?>
-                                    </li>
-                                    <?php
+                                            if ($children === true) {
+                                                loop_tree($page['children'], true);
+                                            } else {
+                                                ?>
+                                </li>
+                        <?php
                                 }
                             }
                             ?>
                         </ul>
                         <?php
-                        if ($is_recursion === true) {
-                            ?>
+                            if ($is_recursion === true) {
+                                ?>
                             </li>
-                            <?php
+                    <?php
                         }
                     }
 
@@ -121,23 +60,7 @@ if (count($sliderProducts) > 0) {
                     ?>
                 </div>
             </div>
-            <?php if ($showBrands == 1) { ?>
-                <div class="filter-sidebar">
-                    <div class="title">
-                        <span><?= lang('brands') ?></span>
-                        <?php if (isset($_GET['brand_id']) && $_GET['brand_id'] != '') { ?>
-                            <a href="javascript:void(0);" class="clear-filter" data-type-clear="brand_id" data-toggle="tooltip" data-placement="right" title="<?= lang('clear_the_filter') ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
-                        <?php } ?>
-                    </div>
-                    <ul>
-                        <?php foreach ($brands as $brand) { ?>
-                            <li>
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i> <a href="javascript:void(0);" data-brand-id="<?= $brand['id'] ?>" class="brand <?= isset($_GET['brand_id']) && $_GET['brand_id'] == $brand['id'] ? 'selected' : '' ?>"><?= $brand['name'] ?></a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            <?php } if ($showOutOfStock == 1) { ?>
+            <?php if ($showOutOfStock == 1) { ?>
                 <div class="filter-sidebar">
                     <div class="title">
                         <span><?= lang('store') ?></span>
@@ -154,7 +77,8 @@ if (count($sliderProducts) > 0) {
                         </li>
                     </ul>
                 </div>
-            <?php } if ($shippingOrder != 0 && $shippingOrder != null) { ?>
+            <?php }
+            if ($shippingOrder != 0 && $shippingOrder != null) { ?>
                 <div class="filter-sidebar">
                     <div class="title">
                         <span><?= lang('freeShippingHeader') ?></span>
@@ -205,11 +129,11 @@ if (count($sliderProducts) > 0) {
             } else {
                 ?>
                 <script>
-                    $(document).ready(function () {
+                    $(document).ready(function() {
                         ShowNotificator('alert-info', '<?= lang('no_results') ?>');
                     });
                 </script>
-                <?php
+            <?php
             }
             ?>
         </div>
