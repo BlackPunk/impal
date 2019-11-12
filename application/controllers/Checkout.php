@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Checkout extends MY_Controller
 {
@@ -17,9 +17,8 @@ class Checkout extends MY_Controller
     {
         $data = array();
         $head = array();
-        $arrSeo = $this->Public_model->getSeo('checkout');
-        $head['title'] = @$arrSeo['title'];
-        $head['description'] = @$arrSeo['description'];
+        $head['title'] = 'Checkout';
+        $head['description'] = 'Bukes';
         $head['keywords'] = str_replace(" ", ",", $head['title']);
 
         if (isset($_POST['payment_type'])) {
@@ -224,5 +223,4 @@ class Checkout extends MY_Controller
         $head['keywords'] = '';
         $this->render('checkout_parts/paypal_success', $head, $data);
     }
-
 }

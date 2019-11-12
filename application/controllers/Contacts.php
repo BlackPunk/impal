@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Contacts extends MY_Controller
 {
@@ -18,7 +18,7 @@ class Contacts extends MY_Controller
         if (isset($_POST['message'])) {
             $result = $this->sendEmail();
             if ($result) {
-                $this->session->set_flashdata('resultSend', 'Email is sened!');
+                $this->session->set_flashdata('resultSend', 'Email is send!');
             } else {
                 $this->session->set_flashdata('resultSend', 'Email send error!');
             }
@@ -26,9 +26,8 @@ class Contacts extends MY_Controller
         }
         $data['googleMaps'] = $this->Home_admin_model->getValueStore('googleMaps');
         $data['googleApi'] = $this->Home_admin_model->getValueStore('googleApi');
-        $arrSeo = $this->Public_model->getSeo('contacts');
-        $head['title'] = @$arrSeo['title'];
-        $head['description'] = @$arrSeo['description'];
+        $head['title'] = 'Bukes - Kontak';
+        $head['description'] = 'Bukes, toko buku online';
         $head['keywords'] = str_replace(" ", ",", $head['title']);
         $this->render('contacts', $head, $data);
     }
@@ -50,5 +49,4 @@ class Contacts extends MY_Controller
         }
         return false;
     }
-
 }

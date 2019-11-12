@@ -3,7 +3,7 @@
 /*
  * Only vendors class
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Vendor extends MY_Controller
 {
@@ -81,5 +81,4 @@ class Vendor extends MY_Controller
         $data['vendorInfo'] = $vendorInfo;
         $this->render('view_product_vendor', $head, $data);
     }
-
 }

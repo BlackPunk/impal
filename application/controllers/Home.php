@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends MY_Controller
 {
@@ -17,9 +17,8 @@ class Home extends MY_Controller
     {
         $data = array();
         $head = array();
-        $arrSeo = $this->Public_model->getSeo('home');
-        $head['title'] = @$arrSeo['title'];
-        $head['description'] = @$arrSeo['description'];
+        $head['title'] = 'Bukes';
+        $head['description'] = 'Bukes, toko buku online';
         $head['keywords'] = str_replace(" ", ",", $head['title']);
         $all_categories = $this->Public_model->getShopCategories();
         $data['home_categories'] = $this->getHomeCategories($all_categories);
@@ -28,7 +27,7 @@ class Home extends MY_Controller
         $data['bestSellers'] = $this->Public_model->getbestSellers();
         $data['newProducts'] = $this->Public_model->getNewProducts();
         $data['sliderProducts'] = $this->Public_model->getSliderProducts();
-        $data['lastBlogs'] = $this->Public_model->getLastBlogs();
+        // $data['lastBlogs'] = $this->Public_model->getLastBlogs();
         $data['products'] = $this->Public_model->getProducts($this->num_rows, $page, $_GET);
         $rowscount = $this->Public_model->productsCount($_GET);
         $data['shippingOrder'] = $this->Home_admin_model->getValueStore('shippingOrder');
@@ -44,26 +43,25 @@ class Home extends MY_Controller
      * shop page
      */
 
-    public function shop($page = 0)
-    {
-        $data = array();
-        $head = array();
-        $arrSeo = $this->Public_model->getSeo('shop');
-        $head['title'] = @$arrSeo['title'];
-        $head['description'] = @$arrSeo['description'];
-        $head['keywords'] = str_replace(" ", ",", $head['title']);
-        $all_categories = $this->Public_model->getShopCategories();
-        $data['home_categories'] = $this->getHomeCategories($all_categories);
-        $data['all_categories'] = $all_categories;
-        $data['showBrands'] = $this->Home_admin_model->getValueStore('showBrands');
-        $data['brands'] = $this->Brands_model->getBrands();
-        $data['showOutOfStock'] = $this->Home_admin_model->getValueStore('outOfStock');
-        $data['shippingOrder'] = $this->Home_admin_model->getValueStore('shippingOrder');
-        $data['products'] = $this->Public_model->getProducts($this->num_rows, $page, $_GET);
-        $rowscount = $this->Public_model->productsCount($_GET);
-        $data['links_pagination'] = pagination('home', $rowscount, $this->num_rows);
-        $this->render('shop', $head, $data);
-    }
+    // public function shop($page = 0)
+    // {
+    //     $data = array();
+    //     $head = array();
+    //     $head['title'] = @$arrSeo['title'];
+    //     $head['description'] = @$arrSeo['description'];
+    //     $head['keywords'] = str_replace(" ", ",", $head['title']);
+    //     $all_categories = $this->Public_model->getShopCategories();
+    //     $data['home_categories'] = $this->getHomeCategories($all_categories);
+    //     $data['all_categories'] = $all_categories;
+    //     $data['showBrands'] = $this->Home_admin_model->getValueStore('showBrands');
+    //     $data['brands'] = $this->Brands_model->getBrands();
+    //     $data['showOutOfStock'] = $this->Home_admin_model->getValueStore('outOfStock');
+    //     $data['shippingOrder'] = $this->Home_admin_model->getValueStore('shippingOrder');
+    //     $data['products'] = $this->Public_model->getProducts($this->num_rows, $page, $_GET);
+    //     $rowscount = $this->Public_model->productsCount($_GET);
+    //     $data['links_pagination'] = pagination('home', $rowscount, $this->num_rows);
+    //     $this->render('shop', $head, $data);
+    // }
 
     private function getHomeCategories($categories)
     {
@@ -206,5 +204,4 @@ class Home extends MY_Controller
 
         echo '</urlset>';
     }
-
 }

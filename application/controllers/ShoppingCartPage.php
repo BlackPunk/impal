@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class ShoppingCartPage extends MY_Controller
 {
@@ -15,11 +15,9 @@ class ShoppingCartPage extends MY_Controller
     {
         $data = array();
         $head = array();
-        $arrSeo = $this->Public_model->getSeo('shoppingcart');
-        $head['title'] = @$arrSeo['title'];
-        $head['description'] = @$arrSeo['description'];
+        $head['title'] = 'Keranjang belanja';
+        $head['description'] = 'Bukes, toko buku online';
         $head['keywords'] = str_replace(" ", ",", $head['title']);
         $this->render('shopping_cart', $head, $data);
     }
-
 }

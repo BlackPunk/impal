@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Blog extends MY_Controller
 {
@@ -76,8 +76,8 @@ class Blog extends MY_Controller
             foreach ($this->arhives as $archive) {
                 $html .= '
 					<li class="item">» <a href="' . LANG_URL . '/blog?from='
-                        . $archive['mintime'] . '&to=' . $archive['maxtime'] . '">'
-                        . $archive['month'] . '</a></li>
+                    . $archive['mintime'] . '&to=' . $archive['maxtime'] . '">'
+                    . $archive['month'] . '</a></li>
 				';
             }
             $html .= '</ul>';
@@ -86,5 +86,4 @@ class Blog extends MY_Controller
         }
         return $html;
     }
-
 }

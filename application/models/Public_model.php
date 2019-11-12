@@ -53,14 +53,14 @@ class Public_model extends CI_Model
         return $query->result_array();
     }
 
-    public function getLastBlogs()
-    {
-        $this->db->limit(5);
-        $this->db->join('blog_translations', 'blog_translations.for_id = blog_posts.id', 'left');
-        $this->db->where('blog_translations.abbr', MY_LANGUAGE_ABBR);
-        $query = $this->db->select('blog_posts.id, blog_translations.title, blog_translations.description, blog_posts.url, blog_posts.time, blog_posts.image')->get('blog_posts');
-        return $query->result_array();
-    }
+    // public function getLastBlogs()
+    // {
+    //     $this->db->limit(5);
+    //     $this->db->join('blog_translations', 'blog_translations.for_id = blog_posts.id', 'left');
+    //     $this->db->where('blog_translations.abbr', MY_LANGUAGE_ABBR);
+    //     $query = $this->db->select('blog_posts.id, blog_translations.title, blog_translations.description, blog_posts.url, blog_posts.time, blog_posts.image')->get('blog_posts');
+    //     return $query->result_array();
+    // }
 
     public function getPosts($limit, $page, $search = null, $month = null)
     {
@@ -195,20 +195,20 @@ class Public_model extends CI_Model
         return $arr;
     }
 
-    public function getSeo($page)
-    {
-        $this->db->where('page_type', $page);
-        $this->db->where('abbr', MY_LANGUAGE_ABBR);
-        $query = $this->db->get('seo_pages_translations');
-        $arr = array();
-        if ($query !== false) {
-            foreach ($query->result_array() as $row) {
-                $arr['title'] = $row['title'];
-                $arr['description'] = $row['description'];
-            }
-        }
-        return $arr;
-    }
+    // public function getSeo($page)
+    // {
+    //     $this->db->where('page_type', $page);
+    //     $this->db->where('abbr', MY_LANGUAGE_ABBR);
+    //     $query = $this->db->get('seo_pages_translations');
+    //     $arr = array();
+    //     if ($query !== false) {
+    //         foreach ($query->result_array() as $row) {
+    //             $arr['title'] = $row['title'];
+    //             $arr['description'] = $row['description'];
+    //         }
+    //     }
+    //     return $arr;
+    // }
 
     public function getOneProduct($id)
     {
