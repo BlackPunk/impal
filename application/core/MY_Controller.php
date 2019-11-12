@@ -3,14 +3,12 @@
 class MY_Controller extends MX_Controller
 {
 
-    public $nonDynPages = array();
     private $dynPages = array();
     protected $template;
 
     public function __construct()
     {
         parent::__construct();
-        $this->getActivePages();
         $this->checkForPostRequests();
         $this->setReferrer();
         //set selected template
@@ -18,8 +16,8 @@ class MY_Controller extends MX_Controller
     }
 
     /*
-     * Render page from controller
-     * it loads header and footer auto
+     * view halaman dari controller
+     * ini ngeload header sama footer otomatis
      */
 
     public function render($view, $head, $data = null, $footer = null)
@@ -59,7 +57,6 @@ class MY_Controller extends MX_Controller
     private function loadVars()
     {
         $vars = array();
-        $vars['nonDynPages'] = $this->nonDynPages;
         $vars['dynPages'] = $this->dynPages;
         $vars['footerCategories'] = $this->Public_model->getFooterCategories();
         $vars['sitelogo'] = $this->Home_admin_model->getValueStore('sitelogo');
@@ -102,26 +99,6 @@ class MY_Controller extends MX_Controller
         return $arr;
     }
 
-    /*
-     * Active pages for navigation
-     * Managed from administration
-     */
-
-    private function getActivePages()
-    {
-        $this->load->model('admin/Pages_model');
-        $activeP = $this->Pages_model->getPages(true);
-        $dynPages = $this->config->item('no_dynamic_pages');
-        $actDynPages = [];
-        foreach ($activeP as $acp) {
-            if (($key = array_search($acp, $dynPages)) !== false) {
-                $actDynPages[] = $acp;
-            }
-        }
-        $this->nonDynPages = $actDynPages;
-        $dynPages = getTextualPages($activeP);
-        $this->dynPages = $this->Public_model->getDynPagesLangs($dynPages);
-    }
 
     /*
      * Email subscribe form from footer
@@ -182,5 +159,4 @@ class MY_Controller extends MX_Controller
         }
         $this->template = 'templates' . DIRECTORY_SEPARATOR . $template . DIRECTORY_SEPARATOR;
     }
-
 }

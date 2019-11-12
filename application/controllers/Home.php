@@ -10,7 +10,6 @@ class Home extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->Model('admin/Brands_model');
     }
 
     public function index($page = 0)
@@ -33,7 +32,6 @@ class Home extends MY_Controller
         $data['shippingOrder'] = $this->Home_admin_model->getValueStore('shippingOrder');
         $data['showOutOfStock'] = $this->Home_admin_model->getValueStore('outOfStock');
         $data['showBrands'] = $this->Home_admin_model->getValueStore('showBrands');
-        $data['brands'] = $this->Brands_model->getBrands();
         $data['links_pagination'] = pagination('home', $rowscount, $this->num_rows);
         $this->render('home', $head, $data);
     }
