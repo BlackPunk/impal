@@ -119,7 +119,6 @@ class Products_model extends CI_Model
                 'weight' => $post['weight'],
                 'width' => $post['width'],
                 'length' => $post['length'],
-                'in_slider' => $post['in_slider'],
                 'position' => $post['position'],
                 'virtual_products' => $post['virtual_products'],
                 'brand_id' => $post['brand_id'],
@@ -152,7 +151,6 @@ class Products_model extends CI_Model
                 'weight' => $post['weight'],
                 'width' => $post['width'],
                 'length' => $post['length'],
-                'in_slider' => $post['in_slider'],
                 'position' => $post['position'],
                 'virtual_products' => $post['virtual_products'],
                 'folder' => $post['folder'],
@@ -198,7 +196,6 @@ class Products_model extends CI_Model
             $post['old_price'][$i] = preg_replace("/[^0-9,.]/", "", $post['old_price'][$i]);
             $arr = array(
                 'title' => $post['title'][$i],
-                'basic_description' => $post['basic_description'][$i],
                 'description' => $post['description'][$i],
                 'price' => $post['price'][$i],
                 'old_price' => $post['old_price'][$i],
@@ -227,7 +224,6 @@ class Products_model extends CI_Model
         $arr = array();
         foreach ($query->result() as $row) {
             $arr[$row->abbr]['title'] = $row->title;
-            $arr[$row->abbr]['basic_description'] = $row->basic_description;
             $arr[$row->abbr]['description'] = $row->description;
             $arr[$row->abbr]['price'] = $row->price;
             $arr[$row->abbr]['old_price'] = $row->old_price;

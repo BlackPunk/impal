@@ -107,12 +107,12 @@ class Loop
                     <div class="product-list <?= $carousel == true ? 'item' : '' ?> <?= $classes ?> <?= $active ?>">
                         <div class="inner">
                             <div class="img-container">
-                                <a href="<?= $article['vendor_url'] == null ? LANG_URL . '/' . $article['url'] : LANG_URL . '/' . $article['vendor_url'] . '/' . $article['url'] ?>">
+                                <a href="<?= LANG_URL . '/' . $article['url'] ?>">
                                     <img src="<?= base_url('/attachments/shop_images/' . $article['image']) ?>" alt="<?= str_replace('"', "'", $article['title']) ?>">
                                 </a>
                             </div>
                             <h2>
-                                <a href="<?= $article['vendor_url'] == null ? LANG_URL . '/' . $article['url'] : LANG_URL . '/' . $article['vendor_url'] . '/' . $article['url'] ?>"><?= character_limiter($article['title'], 70) ?></a>
+                                <a href="<?= LANG_URL . '/' . $article['url'] ?>"><?= character_limiter($article['title'], 70) ?></a>
                             </h2>
                             <div class="price">
                                 <span class="underline"><?= lang('price') ?>: <span><?= CURRENCY ?> <?= $article['price'] != '' ? number_format($article['price'], 2) : 0 ?></span></span>
@@ -132,7 +132,7 @@ class Loop
                                 </div>
                             <?php }
                                         if (self::$CI->load->get_var('moreInfoBtn') == 1) { ?>
-                                <a href="<?= $article['vendor_url'] == null ? LANG_URL . '/' . $article['url'] : LANG_URL . '/' . $article['vendor_url'] . '/' . $article['url'] ?>" class="info-btn gradient-color">
+                                <a href="<?= LANG_URL . '/' . $article['url'] ?>" class="info-btn gradient-color">
                                     <span class="text-to-bg"><?= lang('info_product_list') ?></span>
                                 </a>
                             <?php } ?>

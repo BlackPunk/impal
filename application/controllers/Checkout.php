@@ -34,7 +34,6 @@ class Checkout extends MY_Controller
                     /*
                      * Save product orders in vendors profiles
                      */
-                    $this->setVendorOrders();
                     $this->orderId = $orderId;
                     $this->setActivationLink();
                     $this->sendNotifications();
@@ -53,10 +52,6 @@ class Checkout extends MY_Controller
         $this->render('checkout', $head, $data);
     }
 
-    private function setVendorOrders()
-    {
-        $this->Public_model->setVendorOrder($_POST);
-    }
 
     /*
      * Send notifications to users that have nofify=1 in /admin/adminusers

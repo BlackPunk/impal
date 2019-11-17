@@ -39,20 +39,6 @@ if ($this->session->flashdata('result_publish')) {
                 <label id="smallflag">Title (<?= $language->name ?><img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">)</label>
                 <input type="text" name="title[]" value="<?= $trans_load != null && isset($trans_load[$language->abbr]['title']) ? $trans_load[$language->abbr]['title'] : '' ?>" class="form-control">
             </div>
-
-            <div class="form-group">
-                <a href="javascript:void(0);" class="btn btn-default showSliderDescrption" data-descr="<?= $i ?>">Show Slider Description <span class="glyphicon glyphicon-circle-arrow-down"></span></a>
-            </div>
-            <div class="theSliderDescrption" id="theSliderDescrption-<?= $i ?>" <?= isset($_POST['in_slider']) && $_POST['in_slider'] == 1 ? 'style="display:block;"' : '' ?>>
-                <div class="form-group">
-                    <label id="smallflag" for="basic_description<?= $i ?>">Slider Description (<?= $language->name ?><img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">)</label>
-                    <textarea name="basic_description[]" id="basic_description<?= $i ?>" rows="50" class="form-control"><?= $trans_load != null && isset($trans_load[$language->abbr]['basic_description']) ? $trans_load[$language->abbr]['basic_description'] : '' ?></textarea>
-                    <script>
-                        CKEDITOR.replace('basic_description<?= $i ?>');
-                        CKEDITOR.config.entities = false;
-                    </script>
-                </div>
-            </div>
             <div class="form-group">
                 <label id="smallflag" for="description<?= $i ?>">Description (<?= $language->name ?><img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">)</label>
                 <textarea name="description[]" id="description<?= $i ?>" rows="50" class="form-control"><?= $trans_load != null && isset($trans_load[$language->abbr]['description']) ? $trans_load[$language->abbr]['description'] : '' ?></textarea>
@@ -166,13 +152,6 @@ if ($this->session->flashdata('result_publish')) {
             <textarea class="form-control" name="virtual_products"><?= @$_POST['virtual_products'] ?></textarea>
         </div>
     <?php } ?>
-    <div class="form-group for-shop">
-        <label>In Slider</label>
-        <select class="selectpicker" name="in_slider">
-            <option value="1" <?= isset($_POST['in_slider']) && $_POST['in_slider'] == 1 ? 'selected' : '' ?>>Yes</option>
-            <option value="0" <?= isset($_POST['in_slider']) && $_POST['in_slider'] == 0 || !isset($_POST['in_slider']) ? 'selected' : '' ?>>No</option>
-        </select>
-    </div>
     <div class="form-group for-shop">
         <label>Position</label>
         <input type="text" placeholder="Position number" name="position" value="<?= @$_POST['position'] ?>" class="form-control">
