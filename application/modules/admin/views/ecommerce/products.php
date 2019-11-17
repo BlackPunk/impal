@@ -5,21 +5,21 @@
         <hr>
         <div class="alert alert-success"><?= $this->session->flashdata('result_delete') ?></div>
         <hr>
-        <?php
+    <?php
     }
     if ($this->session->flashdata('result_publish')) {
         ?>
         <hr>
         <div class="alert alert-success"><?= $this->session->flashdata('result_publish') ?></div>
         <hr>
-        <?php
-    } 
+    <?php
+    }
     ?>
     <h1><img src="<?= base_url('assets/imgs/products-img.png') ?>" class="header-img" style="margin-top:-2px;"> Products</h1>
     <hr>
     <div class="row">
         <div class="col-xs-12">
-            <div class="well hidden-xs"> 
+            <div class="well hidden-xs">
                 <div class="row">
                     <form method="GET" id="searchProductsForm" action="">
                         <div class="col-sm-4">
@@ -49,12 +49,12 @@
                                 <?php foreach ($shop_categories as $key_cat => $shop_categorie) { ?>
                                     <option <?= isset($_GET['category']) && $_GET['category'] == $key_cat ? 'selected=""' : '' ?> value="<?= $key_cat ?>">
                                         <?php
-                                        foreach ($shop_categorie['info'] as $nameAbbr) {
-                                            if ($nameAbbr['abbr'] == $this->config->item('language_abbr')) {
-                                                echo $nameAbbr['name'];
+                                            foreach ($shop_categorie['info'] as $nameAbbr) {
+                                                if ($nameAbbr['abbr'] == $this->config->item('language_abbr')) {
+                                                    echo $nameAbbr['name'];
+                                                }
                                             }
-                                        }
-                                        ?>
+                                            ?>
                                     </option>
                                 <?php } ?>
                             </select>
@@ -74,21 +74,20 @@
                                 <th>Title</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
-                                <th>Vendor</th>
                                 <th>Position</th>
                                 <th class="text-right">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($products as $row) {
-                                $u_path = 'attachments/shop_images/';
-                                if ($row->image != null && file_exists($u_path . $row->image)) {
-                                    $image = base_url($u_path . $row->image);
-                                } else {
-                                    $image = base_url('attachments/no-image.png');
-                                }
-                                ?>
+                                foreach ($products as $row) {
+                                    $u_path = 'attachments/shop_images/';
+                                    if ($row->image != null && file_exists($u_path . $row->image)) {
+                                        $image = base_url($u_path . $row->image);
+                                    } else {
+                                        $image = base_url('attachments/no-image.png');
+                                    }
+                                    ?>
 
                                 <tr>
                                     <td>
@@ -102,40 +101,40 @@
                                     </td>
                                     <td>
                                         <?php
-                                        if ($row->quantity > 5) {
-                                            $color = 'label-success';
-                                        }
-                                        if ($row->quantity <= 5) {
-                                            $color = 'label-warning';
-                                        }
-                                        if ($row->quantity == 0) {
-                                            $color = 'label-danger';
-                                        }
-                                        ?>
+                                                if ($row->quantity > 5) {
+                                                    $color = 'label-success';
+                                                }
+                                                if ($row->quantity <= 5) {
+                                                    $color = 'label-warning';
+                                                }
+                                                if ($row->quantity == 0) {
+                                                    $color = 'label-danger';
+                                                }
+                                                ?>
                                         <span style="font-size:12px;" class="label <?= $color ?>">
                                             <?= $row->quantity ?>
                                         </span>
                                     </td>
-                                    <td><?= $row->vendor_id > 0 ? '<a href="?show_vendor=' . $row->vendor_id . '">' . $row->vendor_name . '</a>' : 'No vendor' ?></td>
+                                    <td>No vendor</td>
                                     <td><?= $row->position ?></td>
                                     <td>
                                         <div class="pull-right">
                                             <a href="<?= base_url('admin/publish/' . $row->id) ?>" class="btn btn-info">Edit</a>
-                                            <a href="<?= base_url('admin/products?delete=' . $row->id) ?>"  class="btn btn-danger confirm-delete">Delete</a>
+                                            <a href="<?= base_url('admin/products?delete=' . $row->id) ?>" class="btn btn-danger confirm-delete">Delete</a>
                                         </div>
                                     </td>
                                 </tr>
-                                <?php
-                            }
-                            ?>
+                            <?php
+                                }
+                                ?>
                         </tbody>
                     </table>
                 </div>
                 <?= $links_pagination ?>
-            </div>
-            <?php
-        } else {
-            ?>
-            <div class ="alert alert-info">No products found!</div>
-        <?php } ?>
+        </div>
+    <?php
+    } else {
+        ?>
+        <div class="alert alert-info">No products found!</div>
+    <?php } ?>
     </div>

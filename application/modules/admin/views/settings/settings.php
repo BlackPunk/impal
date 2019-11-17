@@ -273,23 +273,6 @@
     </div>
     <div class="col-sm-6 col-md-4">
         <div class="panel panel-success col-h">
-            <div class="panel-heading">Multi-Vendor Support</div>
-            <div class="panel-body">
-                <?php if ($this->session->flashdata('multiVendor')) { ?>
-                    <div class="alert alert-info"><?= $this->session->flashdata('multiVendor') ?></div>
-                <?php } ?>
-                <form method="POST" action="">
-                    <input type="hidden" name="multiVendor" value="<?= $multiVendor ?>">
-                    <input <?= $multiVendor == 1 ? 'checked' : '' ?> data-toggle="toggle" data-for-field="multiVendor" class="toggle-changer" type="checkbox">
-                    <button class="btn btn-default" value="" type="submit">
-                        Save
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="panel panel-success col-h">
             <div class="panel-heading">Show in list out of stock products</div>
             <div class="panel-body">
                 <?php if ($this->session->flashdata('outOfStock')) { ?>
@@ -332,23 +315,6 @@
                 <form method="POST" action="">
                     <input type="hidden" name="showBrands" value="<?= $showBrands ?>">
                     <input <?= $showBrands == 1 ? 'checked' : '' ?> data-toggle="toggle" data-for-field="showBrands" class="toggle-changer" type="checkbox">
-                    <button class="btn btn-default" value="" type="submit">
-                        Save
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="panel panel-success col-h">
-            <div class="panel-heading">Show in slider products to list</div>
-            <div class="panel-body">
-                <?php if ($this->session->flashdata('showInSlider')) { ?>
-                    <div class="alert alert-info"><?= $this->session->flashdata('showInSlider') ?></div>
-                <?php } ?>
-                <form method="POST" action="">
-                    <input type="hidden" name="showInSlider" value="<?= $showInSlider ?>">
-                    <input <?= $showInSlider == 1 ? 'checked' : '' ?> data-toggle="toggle" data-for-field="showInSlider" class="toggle-changer" type="checkbox">
                     <button class="btn btn-default" value="" type="submit">
                         Save
                     </button>

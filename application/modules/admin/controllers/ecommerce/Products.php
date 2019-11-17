@@ -96,5 +96,4 @@ class Products extends ADMIN_Controller
         }
         $this->saveHistory('Change product id ' . $_POST['id'] . ' to status ' . $_POST['to_status']);
     }
-
 }

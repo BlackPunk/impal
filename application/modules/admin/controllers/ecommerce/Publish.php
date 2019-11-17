@@ -17,7 +17,6 @@ class Publish extends ADMIN_Controller
         $this->load->model(array(
             'Products_model',
             'Languages_model',
-            'Brands_model',
             'Categories_model'
         ));
     }
@@ -62,7 +61,6 @@ class Publish extends ADMIN_Controller
         $data['trans_load'] = $trans_load;
         $data['languages'] = $this->Languages_model->getLanguages();
         $data['shop_categories'] = $this->Categories_model->getShopCategories();
-        $data['brands'] = $this->Brands_model->getBrands();
         $data['otherImgs'] = $this->loadOthersImages();
         $this->load->view('_parts/header', $head);
         $this->load->view('ecommerce/publish', $data);
@@ -159,5 +157,4 @@ class Publish extends ADMIN_Controller
             unlink($img);
         }
     }
-
 }

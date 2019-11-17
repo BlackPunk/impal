@@ -115,9 +115,6 @@ textarea.form-control {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-.theSliderDescrption {
-  display: none;
-}
 .more-info-purchase > tbody > tr > td,
 .more-info-purchase > tbody > tr > th,
 .more-info-purchase > tfoot > tr > td,

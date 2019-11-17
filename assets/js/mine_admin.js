@@ -363,11 +363,6 @@ $("#modalConvertor").on("hidden.bs.modal", function(e) {
   $("#new_currency").empty();
 });
 
-$(".showSliderDescrption").click(function() {
-  var desc_id = $(this).data("descr");
-  $("#theSliderDescrption-" + desc_id).slideToggle("slow", function() {});
-});
-
 // Products
 $(".change-products-form").change(function() {
   $("#searchProductsForm").submit();

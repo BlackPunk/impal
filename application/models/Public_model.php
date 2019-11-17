@@ -67,7 +67,7 @@ class Public_model extends CI_Model
         return $query->result_array();
     }
 
-    public function getProducts($limit = null, $start = null, $big_get, $vendor_id = false)
+    public function getProducts($limit = null, $start = null, $big_get)
     {
         if ($limit !== null && $start !== null) {
             $this->db->limit($limit, $start);
@@ -353,7 +353,7 @@ class Public_model extends CI_Model
         return $query->result_array();
     }
 
-    public function sameCagegoryProducts($categorie, $noId, $vendor_id = false)
+    public function sameCagegoryProducts($categorie, $noId)
     {
         $this->db->select('products.id, products.quantity, products.image, products.url, products_translations.price, products_translations.title, products_translations.old_price');
         $this->db->join('products_translations', 'products_translations.for_id = products.id', 'left');

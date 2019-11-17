@@ -155,10 +155,6 @@ if (!isset($_GET['settings'])) {
                                                                     <b>Harga: <?= $this->config->item('currency') . ' ' . $product['product_info']['price'] ?></b>
                                                                 </div>
                                                             </a>
-                                                            <div class="">
-                                                                <b>Vendor:</b>
-                                                                <a href=""><?= $product['product_info']['vendor_name'] ?></a>
-                                                            </div>
                                                             <div class="clearfix"></div>
                                                         </div>
                                                         <div style="padding-top:10px; font-size:16px;">Total harga produk: <?= $this->config->item('currency') . ' ' . $total_amount ?></div>

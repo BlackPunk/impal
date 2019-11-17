@@ -59,13 +59,9 @@ class Products_model extends CI_Model
         if ($category != null) {
             $this->db->where('shop_categorie', $category);
         }
-        if ($vendor != null) {
-            $this->db->where('vendor_id', $vendor);
-        }
-        $this->db->join('vendors', 'vendors.id = products.vendor_id', 'left');
         $this->db->join('products_translations', 'products_translations.for_id = products.id', 'left');
         $this->db->where('products_translations.abbr', MY_DEFAULT_LANGUAGE_ABBR);
-        $query = $this->db->select('vendors.name as vendor_name, vendors.id as vendor_id, products.*, products_translations.title, products_translations.description, products_translations.price, products_translations.old_price, products_translations.abbr, products.url, products_translations.for_id, products_translations.basic_description')->get('products', $limit, $page);
+        $query = $this->db->select('products.*, products_translations.title, products_translations.description, products_translations.price, products_translations.old_price, products_translations.abbr, products.url, products_translations.for_id')->get('products', $limit, $page);
         return $query->result();
     }
 
@@ -76,9 +72,8 @@ class Products_model extends CI_Model
 
     public function getOneProduct($id)
     {
-        $this->db->select('vendors.name as vendor_name, vendors.id as vendor_id, products.*, products_translations.price');
+        $this->db->select('products.*, products_translations.price');
         $this->db->where('products.id', $id);
-        $this->db->join('vendors', 'vendors.id = products.vendor_id', 'left');
         $this->db->join('products_translations', 'products_translations.for_id = products.id', 'inner');
         $this->db->where('products_translations.abbr', MY_DEFAULT_LANGUAGE_ABBR);
         $query = $this->db->get('products');
