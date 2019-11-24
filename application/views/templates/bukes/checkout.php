@@ -36,7 +36,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 if (filter_var($paypal_email, FILTER_VALIDATE_EMAIL)) { ?>
                                 <option value="PayPal"><?= lang('paypal') ?> </option>
                             <?php }
-                                if ($bank_account['iban'] != null) { ?>
+                                if ($bank_account['rekening'] != null) { ?>
                                 <option value="Bank"><?= lang('bank_payment') ?> </option>
                             <?php } ?>
                         </select>
@@ -124,7 +124,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <tr>
                                     <td colspan="4" class="text-right"><?= lang('total') ?></td>
                                     <td>
-                                        <span class="final-amount"><?= CURRENCY . ' ' . $cartItems['finalSum'] ?></span>
+                                        <span><?= CURRENCY ?></span>
+                                        <span class="final-amount"><?= $cartItems['finalSum'] ?></span>
                                         <input type="hidden" class="final-amount" name="final_amount" value="<?= $cartItems['finalSum'] ?>">
                                         <input type="hidden" name="amount_currency" value="<?= CURRENCY ?>">
                                         <input type="hidden" name="discountAmount" value="">

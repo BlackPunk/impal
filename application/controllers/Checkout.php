@@ -89,7 +89,7 @@ class Checkout extends MY_Controller
         }
         if ($_POST['payment_type'] == 'Bank') {
             $_SESSION['order_id'] = $this->orderId;
-            $_SESSION['final_amount'] = $_POST['final_amount'] . $_POST['amount_currency'];
+            $_SESSION['final_amount'] = $_POST['amount_currency'] . ' ' . $_POST['final_amount'];
             redirect(LANG_URL . '/checkout/successbank');
         }
         if ($_POST['payment_type'] == 'cashOnDelivery') {
@@ -132,9 +132,8 @@ class Checkout extends MY_Controller
         if ($this->session->flashdata('order_error')) {
             $data = array();
             $head = array();
-            $arrSeo = $this->Public_model->getSeo('checkout');
-            $head['title'] = @$arrSeo['title'];
-            $head['description'] = @$arrSeo['description'];
+            $head['title'] = 'Order error';
+            $head['description'] = 'Order error';
             $head['keywords'] = str_replace(" ", ",", $head['title']);
             $this->render('checkout_parts/order_error', $head, $data);
         } else {
@@ -146,9 +145,8 @@ class Checkout extends MY_Controller
     {
         $data = array();
         $head = array();
-        $arrSeo = $this->Public_model->getSeo('checkout');
-        $head['title'] = @$arrSeo['title'];
-        $head['description'] = @$arrSeo['description'];
+        $head['title'] = 'Pembayaran paypal';
+        $head['description'] = 'Pembayaran paypal';
         $head['keywords'] = str_replace(" ", ",", $head['title']);
         $data['paypal_sandbox'] = $this->Home_admin_model->getValueStore('paypal_sandbox');
         $data['paypal_email'] = $this->Home_admin_model->getValueStore('paypal_email');
@@ -160,9 +158,8 @@ class Checkout extends MY_Controller
         if ($this->session->flashdata('success_order')) {
             $data = array();
             $head = array();
-            $arrSeo = $this->Public_model->getSeo('checkout');
-            $head['title'] = @$arrSeo['title'];
-            $head['description'] = @$arrSeo['description'];
+            $head['title'] = 'COD';
+            $head['description'] = 'Cash On Delivery';
             $head['keywords'] = str_replace(" ", ",", $head['title']);
             $this->render('checkout_parts/payment_success_cash', $head, $data);
         } else {
@@ -175,9 +172,8 @@ class Checkout extends MY_Controller
         if ($this->session->flashdata('success_order')) {
             $data = array();
             $head = array();
-            $arrSeo = $this->Public_model->getSeo('checkout');
-            $head['title'] = @$arrSeo['title'];
-            $head['description'] = @$arrSeo['description'];
+            $head['title'] = 'Pembayaran Bank';
+            $head['description'] = 'Pembayaran Bank';
             $head['keywords'] = str_replace(" ", ",", $head['title']);
             $data['bank_account'] = $this->Orders_model->getBankAccountSettings();
             $this->render('checkout_parts/payment_success_bank', $head, $data);

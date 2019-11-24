@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <div class="container">
     <?php
@@ -15,12 +15,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td colspan="2"><?= $bank_account != null ? $bank_account['name'] : '' ?></td>
                     </tr>
                     <tr>
-                        <td><b class="bg-info"><?= lang('bank_iban') ?></b></td>
-                        <td><b class="bg-info"><?= lang('bank_bic') ?></b></td>
+                        <td><b class="bg-info">Rekening</b></td>
+                        <td><b class="bg-info">Kode Bank</b></td>
                     </tr>
                     <tr>
-                        <td><?= $bank_account != null ? $bank_account['iban'] : '' ?></td>
-                        <td><?= $bank_account != null ? $bank_account['bic'] : '' ?></td>
+                        <td><?= $bank_account != null ? $bank_account['rekening'] : '' ?></td>
+                        <td><?= $bank_account != null ? $bank_account['kodebank'] : '' ?></td>
                     </tr>
                     <tr>
                         <td colspan="2"><b class="bg-info"><?= lang('bank_name') ?></b></td>

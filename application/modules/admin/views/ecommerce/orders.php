@@ -265,8 +265,8 @@ if (isset($_GET['settings'])) {
                                 <td><b>KODE BANK</b></td>
                             </tr>
                             <tr>
-                                <td><input type="text" class="form-control" value="<?= $bank_account != null ? $bank_account['iban'] : '' ?>" name="iban" placeholder="Contoh: 112345667"></td>
-                                <td><input type="text" class="form-control" value="<?= $bank_account != null ? $bank_account['bic'] : '' ?>" name="bic" placeholder="Contoh (untuk BCA): 014"></td>
+                                <td><input type="text" class="form-control" value="<?= $bank_account != null ? $bank_account['rekening'] : '' ?>" name="rekening" placeholder="Contoh: 112345667"></td>
+                                <td><input type="text" class="form-control" value="<?= $bank_account != null ? $bank_account['kodebank'] : '' ?>" name="kodebank" placeholder="Contoh (untuk BCA): 014"></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><b>Nama Bank</b></td>
