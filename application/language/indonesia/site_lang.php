@@ -1,4 +1,4 @@
-<?php 
+<?php
 $lang['products'] = 'Produk';
 $lang['sort_by'] = 'Urut berdasarkan';
 $lang['new'] = 'Baru';
@@ -48,9 +48,9 @@ $lang['custom_order'] = 'Buat pesanan';
 $lang['c_o_d_order_completed'] = 'Pesanan diterima, kami akan menghubungi kamu untuk konfirmasi';
 $lang['no_products_in_cart'] = 'Keranjang belanja masih kosong';
 $lang['go_back'] = 'Kembali';
-$lang['procurement_desc'] = 'Most sallers';
-$lang['procurement_asc'] = 'Low sallers';
-$lang['procurement_title'] = 'Sort by sallers';
+$lang['procurement_desc'] = 'Penjualan terbanyak';
+$lang['procurement_asc'] = 'Penjualan terendah';
+$lang['procurement_title'] = 'Urutkan berdasarkan penjualan';
 $lang['price_title'] = 'Urutkan berdasarkan harga';
 $lang['price_from'] = 'Harga dari';
 $lang['price_to'] = 'Sampai';
@@ -88,7 +88,7 @@ $lang['message'] = 'Pesan';
 $lang['send_message'] = 'Kirim pesan';
 $lang['our_office'] = 'Kantor kami';
 $lang['email_added'] = 'Alamat email Anda ditambahkan';
-$lang['freeShippingHeader'] = 'Memesan';
+$lang['freeShippingHeader'] = 'Gratis pemesanan';
 $lang['freeShipping'] = 'Untuk pesanan lebih dari %currency% %price% biaya perngiriman gratis';
 $lang['promo'] = 'Promo';
 $lang['paypal'] = 'PayPal';
