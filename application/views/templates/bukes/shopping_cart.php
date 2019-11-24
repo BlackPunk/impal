@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <div class="container" id="shopping-cart">
     <h1><?= lang('shopping_cart') ?></h1>
@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     if ($cartItems['array'] == null) {
         ?>
         <div class="alert alert-info"><?= lang('no_products_in_cart') ?></div>
-        <?php
+    <?php
     } else {
         echo purchase_steps(1);
         ?>
@@ -46,13 +46,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <span class="glyphicon glyphicon-minus"></span>
                                 </a>
                             </td>
-                            <td><?= $item['price'] . CURRENCY ?></td>
-                            <td><?= $item['sum_price'] . CURRENCY ?></td>
+                            <td><?= CURRENCY . $item['price'] ?></td>
+                            <td><?= CURRENCY . $item['sum_price'] ?></td>
                         </tr>
                     <?php } ?>
                     <tr>
                         <td colspan="4" class="text-right"><?= lang('total') ?></td>
-                        <td><?= $cartItems['finalSum'] . CURRENCY ?></td>
+                        <td><?= CURRENCY . $cartItems['finalSum'] ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?= lang('back_to_shop') ?>
         </a>
         <a class="btn btn-primary go-checkout" href="<?= LANG_URL . '/checkout' ?>">
-            <?= lang('checkout') ?> 
+            <?= lang('checkout') ?>
             <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
         </a>
     <?php } ?>
@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if ($this->session->flashdata('deleted')) {
     ?>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             ShowNotificator('alert-info', '<?= $this->session->flashdata('deleted') ?>');
         });
     </script>

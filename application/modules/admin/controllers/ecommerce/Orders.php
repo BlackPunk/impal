@@ -59,14 +59,14 @@ class Orders extends ADMIN_Controller
             $this->saveHistory('Change Cash On Delivery Visibility - ' . $_POST['cashondelivery_visibility']);
             redirect('admin/orders?settings');
         }
-        if (isset($_POST['iban'])) {
+        if (isset($_POST['rekening'])) {
             $this->Orders_model->setBankAccountSettings($_POST);
             $this->session->set_flashdata('bank_account', 'Bank account settings saved');
             $this->saveHistory('Bank account settings saved for : ' . $_POST['name']);
             redirect('admin/orders?settings');
         }
         $data['paypal_sandbox'] = $this->Home_admin_model->getValueStore('paypal_sandbox');
-        $data['paypal_email'] = $this->Home_admin_model->getValueStore('paypal_email'); 
+        $data['paypal_email'] = $this->Home_admin_model->getValueStore('paypal_email');
         $data['cashondelivery_visibility'] = $this->Home_admin_model->getValueStore('cashondelivery_visibility');
         $data['bank_account'] = $this->Orders_model->getBankAccountSettings();
         $this->load->view('_parts/header', $head);
@@ -106,27 +106,4 @@ class Orders extends ADMIN_Controller
         }
         $this->saveHistory('Change status of Order Id ' . $_POST['the_id'] . ' to status ' . $_POST['to_status']);
     }
-
-    private function sendVirtualProducts()
-    {
-        if(isset($_POST['products']) && $_POST['products'] != '') {
-            $products = unserialize(html_entity_decode($_POST['products']));
-            foreach ($products as $product_id => $product_quantity) {
-                $productInfo = modules::run('admin/ecommerce/products/getProductInfo', $product_id);
-                /*
-                 * If is virtual product, lets send email to user
-                 */
-                if ($productInfo['virtual_products'] != null) {
-                    if (!filter_var($_POST['userEmail'], FILTER_VALIDATE_EMAIL)) {
-                        log_message('error', 'Ivalid customer email address! Cant send him virtual products!');
-                        return false;
-                    }
-                    $result = $this->sendmail->sendTo($_POST['userEmail'], 'Dear Customer', 'Virtual products', $productInfo['virtual_products']);
-                    return $result;
-                }
-            }
-            return true;
-        }
-    }
-
 }

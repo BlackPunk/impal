@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Nov 2019 pada 18.22
+-- Waktu pembuatan: 24 Nov 2019 pada 20.52
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.3.8
 
@@ -31,17 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `bank_accounts` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `iban` varchar(255) NOT NULL,
-  `bank` varchar(255) NOT NULL,
-  `bic` varchar(255) NOT NULL
+  `rekening` varchar(255) NOT NULL,
+  `kodebank` int(10) DEFAULT NULL,
+  `bank` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `bank_accounts`
 --
 
-INSERT INTO `bank_accounts` (`id`, `name`, `iban`, `bank`, `bic`) VALUES
-(1, 'Bukes', '12451241', 'Mandiri', '');
+INSERT INTO `bank_accounts` (`id`, `name`, `rekening`, `kodebank`, `bank`) VALUES
+(1, 'Bukes', '12451241', 123, 'Mandiri');
 
 -- --------------------------------------------------------
 
@@ -60,8 +60,8 @@ CREATE TABLE `confirm_links` (
 --
 
 INSERT INTO `confirm_links` (`id`, `link`, `for_order`) VALUES
-(11, '284d1988e5fcd305dc79bd6c34dee565', 1234),
-(12, '93a92836936be5e5710f60615d871ec8', 1235);
+(21, 'b2c2431ad5d84f9ed3d7d86cb75904b3', 1234),
+(22, '29c0823cea6f7c37f94b87154b1faad9', 1235);
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,7 @@ CREATE TABLE `discount_codes` (
 --
 
 INSERT INTO `discount_codes` (`id`, `type`, `code`, `amount`, `valid_from_date`, `valid_to_date`, `status`) VALUES
-(1, 'percent', 'JH8RDS', '10', 1565974800, 1572454800, 1);
+(1, 'percent', 'JH8RDS', '10', 1565974800, 1575306000, 1);
 
 -- --------------------------------------------------------
 
@@ -247,8 +247,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_id`, `user_id`, `products`, `date`, `referrer`, `clean_referrer`, `payment_type`, `paypal_status`, `processed`, `viewed`, `confirmed`, `discount_code`) VALUES
-(12, 1235, 0, 'a:1:{i:0;a:2:{s:12:\"product_info\";a:24:{s:11:\"vendor_name\";N;s:9:\"vendor_id\";s:1:\"0\";s:2:\"id\";s:1:\"2\";s:6:\"folder\";s:10:\"1571753288\";s:5:\"image\";s:16:\"ir__soekarno.jpg\";s:4:\"time\";s:10:\"1571753332\";s:11:\"time_update\";s:10:\"1571781988\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"4\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:14:\"17 August 1945\";s:4:\"isbn\";s:10:\"1284128481\";s:9:\"publisher\";s:9:\"Pancasila\";s:6:\"weight\";s:1:\"1\";s:5:\"width\";s:1:\"3\";s:6:\"length\";s:1:\"4\";s:11:\"procurement\";s:1:\"3\";s:9:\"in_slider\";s:1:\"0\";s:3:\"url\";s:18:\"Presiden_pertama_2\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"1\";s:5:\"price\";s:6:\"100000\";}s:16:\"product_quantity\";s:1:\"1\";}}', 1573030134, 'Direct', 'Direct', 'Bank', NULL, 1, 1, 0, ''),
-(11, 1234, 1, 'a:2:{i:0;a:2:{s:12:\"product_info\";a:24:{s:11:\"vendor_name\";N;s:9:\"vendor_id\";s:1:\"0\";s:2:\"id\";s:1:\"2\";s:6:\"folder\";s:10:\"1571753288\";s:5:\"image\";s:16:\"ir__soekarno.jpg\";s:4:\"time\";s:10:\"1571753332\";s:11:\"time_update\";s:10:\"1571781988\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"5\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:14:\"17 August 1945\";s:4:\"isbn\";s:10:\"1284128481\";s:9:\"publisher\";s:9:\"Pancasila\";s:6:\"weight\";s:1:\"1\";s:5:\"width\";s:1:\"3\";s:6:\"length\";s:1:\"4\";s:11:\"procurement\";s:1:\"2\";s:9:\"in_slider\";s:1:\"0\";s:3:\"url\";s:18:\"Presiden_pertama_2\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"1\";s:5:\"price\";s:6:\"100000\";}s:16:\"product_quantity\";s:1:\"1\";}i:1;a:2:{s:12:\"product_info\";a:24:{s:11:\"vendor_name\";N;s:9:\"vendor_id\";s:1:\"0\";s:2:\"id\";s:1:\"3\";s:6:\"folder\";s:10:\"1571763694\";s:5:\"image\";s:21:\"President_Suharto.jpg\";s:4:\"time\";s:10:\"1571763770\";s:11:\"time_update\";s:10:\"1571782020\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"2\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:16:\"20 November 2015\";s:4:\"isbn\";s:1:\"-\";s:9:\"publisher\";s:1:\"-\";s:6:\"weight\";s:1:\"0\";s:5:\"width\";s:1:\"0\";s:6:\"length\";s:1:\"0\";s:11:\"procurement\";s:1:\"1\";s:9:\"in_slider\";s:1:\"0\";s:3:\"url\";s:16:\"Presiden_kedua_3\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"2\";s:5:\"price\";s:6:\"120000\";}s:16:\"product_quantity\";s:1:\"1\";}}', 1571993766, 'http://localhost/ekom/admin/history', 'localhost', 'cashOnDelivery', NULL, 0, 1, 0, '');
+(22, 1235, 0, 'a:2:{i:0;a:2:{s:12:\"product_info\";a:22:{s:2:\"id\";s:1:\"5\";s:6:\"folder\";s:10:\"1571782280\";s:5:\"image\";s:31:\"President_Abdurrahman_Wahid.jpg\";s:4:\"time\";s:10:\"1571782325\";s:11:\"time_update\";s:1:\"0\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"6\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:12:\"05 June 1986\";s:4:\"isbn\";s:9:\"513426453\";s:9:\"publisher\";s:9:\"Pancasila\";s:6:\"weight\";s:1:\"0\";s:5:\"width\";s:1:\"0\";s:6:\"length\";s:1:\"0\";s:11:\"procurement\";s:1:\"0\";s:3:\"url\";s:18:\"Presiden_keempat_5\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"4\";s:9:\"vendor_id\";s:1:\"0\";s:5:\"price\";s:5:\"52411\";}s:16:\"product_quantity\";s:1:\"2\";}i:1;a:2:{s:12:\"product_info\";a:22:{s:2:\"id\";s:1:\"6\";s:6:\"folder\";s:10:\"1571782361\";s:5:\"image\";s:47:\"President_Megawati_Sukarnoputri_-_Indonesia.jpg\";s:4:\"time\";s:10:\"1571782411\";s:11:\"time_update\";s:1:\"0\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"3\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:12:\"24 July 1986\";s:4:\"isbn\";s:0:\"\";s:9:\"publisher\";s:0:\"\";s:6:\"weight\";s:1:\"0\";s:5:\"width\";s:1:\"0\";s:6:\"length\";s:1:\"0\";s:11:\"procurement\";s:1:\"0\";s:3:\"url\";s:17:\"Presiden_kelima_6\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"5\";s:9:\"vendor_id\";s:1:\"0\";s:5:\"price\";s:5:\"53112\";}s:16:\"product_quantity\";s:1:\"1\";}}', 1574624678, 'Direct', 'Direct', 'cashOnDelivery', NULL, 1, 1, 1, ''),
+(21, 1234, 0, 'a:1:{i:0;a:2:{s:12:\"product_info\";a:22:{s:2:\"id\";s:1:\"2\";s:6:\"folder\";s:10:\"1571753288\";s:5:\"image\";s:16:\"ir__soekarno.jpg\";s:4:\"time\";s:10:\"1571753332\";s:11:\"time_update\";s:10:\"1573599877\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"3\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:14:\"17 August 1945\";s:4:\"isbn\";s:10:\"1284128481\";s:9:\"publisher\";s:9:\"Pancasila\";s:6:\"weight\";s:1:\"1\";s:5:\"width\";s:1:\"3\";s:6:\"length\";s:1:\"4\";s:11:\"procurement\";s:1:\"4\";s:3:\"url\";s:18:\"Presiden_pertama_2\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"1\";s:9:\"vendor_id\";s:1:\"0\";s:5:\"price\";s:6:\"100000\";}s:16:\"product_quantity\";s:1:\"2\";}}', 1574623842, 'Direct', 'Direct', 'cashOnDelivery', NULL, 1, 1, 1, 'JH8RDS');
 
 -- --------------------------------------------------------
 
@@ -274,8 +274,8 @@ CREATE TABLE `orders_clients` (
 --
 
 INSERT INTO `orders_clients` (`id`, `first_name`, `last_name`, `email`, `phone`, `address`, `city`, `post_code`, `notes`, `for_id`) VALUES
-(11, 'ammar', 'amri', 'amaramri905@gmail.com', '085813238669', 'Kp. Cibitung tengah, RT/RW 002/001, Desa CibitungWetan, Kec. Pamijahan', 'Bogor', '16680', 'wrna ijo', 11),
-(12, 'Dewa', 'rizki', 'dewa@gmail.com', '08123456', 'palem residence 2', 'bandung', '123', '', 12);
+(21, 'Murniasih', 'asda', 'admin@blackpunk.id', '12345678', 'Dramaga cantik', 'Bogor', '16680', '', 21),
+(22, 'Murniasih', 'jhbkhj', 'admin@blackpunk.id', '12345678', 'Dramaga cantik', 'Bogor', '16680', '', 22);
 
 -- --------------------------------------------------------
 
@@ -313,12 +313,12 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `folder`, `image`, `time`, `time_update`, `visibility`, `shop_categorie`, `quantity`, `pages`, `datePublish`, `isbn`, `publisher`, `weight`, `width`, `length`, `procurement`, `url`, `virtual_products`, `brand_id`, `position`, `vendor_id`) VALUES
 (1, 1571661963, 'hos_cokro.jpg', 1571662043, 1571662895, 1, 1, 1, NULL, '-', '-', '-', NULL, NULL, NULL, 1, 'Presiden_pertama_1', NULL, NULL, 1, 0),
-(2, 1571753288, 'ir__soekarno.jpg', 1571753332, 1573599877, 1, 2, 4, 0, '17 August 1945', '1284128481', 'Pancasila', 1, 3, 4, 3, 'Presiden_pertama_2', NULL, NULL, 1, 0),
+(2, 1571753288, 'ir__soekarno.jpg', 1571753332, 1573599877, 1, 2, 1, 0, '17 August 1945', '1284128481', 'Pancasila', 1, 3, 4, 6, 'Presiden_pertama_2', NULL, NULL, 1, 0),
 (3, 1571763694, 'President_Suharto.jpg', 1571763770, 1571782020, 1, 2, 2, 0, '20 November 2015', '-', '-', 0, 0, 0, 1, 'Presiden_kedua_3', NULL, NULL, 2, 0),
 (4, 1571782082, 'Foto_Presiden_Habibie_1998.jpg', 1571782205, 1571782224, 1, 2, 3, 120, '25 June 1936', '51351252', 'Pancasila', 0, 0, 0, 0, 'Presiden_ketiga_4', NULL, NULL, 3, 0),
-(5, 1571782280, 'President_Abdurrahman_Wahid.jpg', 1571782325, 0, 1, 2, 6, 0, '05 June 1986', '513426453', 'Pancasila', 0, 0, 0, 0, 'Presiden_keempat_5', NULL, NULL, 4, 0),
-(6, 1571782361, 'President_Megawati_Sukarnoputri_-_Indonesia.jpg', 1571782411, 0, 1, 2, 3, 0, '24 July 1986', '', '', 0, 0, 0, 0, 'Presiden_kelima_6', NULL, NULL, 5, 0),
-(7, 1571782463, 'Presiden_Susilo_Bambang_Yudhoyono.png', 1571782501, 1571782609, 1, 2, 3, 0, 'Choose', '', '', 0, 0, 0, 0, 'Presiden_keenam_7', NULL, NULL, 6, 0),
+(5, 1571782280, 'President_Abdurrahman_Wahid.jpg', 1571782325, 0, 1, 2, 4, 0, '05 June 1986', '513426453', 'Pancasila', 0, 0, 0, 2, 'Presiden_keempat_5', NULL, NULL, 4, 0),
+(6, 1571782361, 'President_Megawati_Sukarnoputri_-_Indonesia.jpg', 1571782411, 0, 1, 2, 2, 0, '24 July 1986', '', '', 0, 0, 0, 1, 'Presiden_kelima_6', NULL, NULL, 5, 0),
+(7, 1571782463, 'Presiden_Susilo_Bambang_Yudhoyono.png', 1571782501, 1571782609, 1, 2, 2, 0, 'Choose', '', '', 0, 0, 0, 1, 'Presiden_keenam_7', NULL, NULL, 6, 0),
 (8, 1571782506, 'Joko-Widodo.jpg', 1571782593, 0, 1, 2, 2, 0, 'Choose', '', '', 0, 0, 0, 0, 'Presiden_ketujuh_8', NULL, NULL, 7, 0);
 
 -- --------------------------------------------------------
@@ -457,7 +457,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `notify`, `last_login`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'your@email.com', 1, 1574602266);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'fertyokta@gmail.com', 1, 1574616940);
 
 -- --------------------------------------------------------
 
@@ -670,7 +670,7 @@ ALTER TABLE `bank_accounts`
 -- AUTO_INCREMENT untuk tabel `confirm_links`
 --
 ALTER TABLE `confirm_links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `cookie_law`
@@ -712,13 +712,13 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `orders_clients`
 --
 ALTER TABLE `orders_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `products`

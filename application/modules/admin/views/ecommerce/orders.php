@@ -140,9 +140,9 @@ if (!isset($_GET['settings'])) {
                                                 <td colspan="2">
                                                     <?php
                                                                 $arr_products = unserialize($tr['products']);
+                                                                $total_amount = 0;
                                                                 foreach ($arr_products as $product) {
-                                                                    $total_amount = 0;
-                                                                    $total_amount += str_replace(' ', '', str_replace(',', '.', $product['product_info']['price']));
+                                                                    $total_amount += str_replace(' ', '', str_replace(',', '.', $product['product_info']['price'])) * $product['product_quantity'];
                                                                     ?>
                                                         <div style="word-break: break-all;">
                                                             <div>
@@ -157,10 +157,10 @@ if (!isset($_GET['settings'])) {
                                                             </a>
                                                             <div class="clearfix"></div>
                                                         </div>
-                                                        <div style="padding-top:10px; font-size:16px;">Total harga produk: <?= $this->config->item('currency') . ' ' . $total_amount ?></div>
                                                         <hr>
                                                     <?php }
                                                                 ?>
+                                                    <div style="padding-top:10px; font-size:16px;">Total harga produk: <?= $this->config->item('currency') . ' ' . $total_amount ?></div>
                                                 </td>
                                             </tr>
                                         </tbody>
