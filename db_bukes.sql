@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2019 at 07:19 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.8
+-- Waktu pembuatan: 24 Nov 2019 pada 18.22
+-- Versi server: 10.3.16-MariaDB
+-- Versi PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,26 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `active_pages`
---
-
-CREATE TABLE `active_pages` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `enabled` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `active_pages`
---
-
-INSERT INTO `active_pages` (`id`, `name`, `enabled`) VALUES
-(1, 'blog', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bank_accounts`
+-- Struktur dari tabel `bank_accounts`
 --
 
 CREATE TABLE `bank_accounts` (
@@ -56,7 +37,7 @@ CREATE TABLE `bank_accounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `bank_accounts`
+-- Dumping data untuk tabel `bank_accounts`
 --
 
 INSERT INTO `bank_accounts` (`id`, `name`, `iban`, `bank`, `bic`) VALUES
@@ -65,45 +46,7 @@ INSERT INTO `bank_accounts` (`id`, `name`, `iban`, `bank`, `bic`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog_posts`
---
-
-CREATE TABLE `blog_posts` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `time` int(10) UNSIGNED NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `blog_translations`
---
-
-CREATE TABLE `blog_translations` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
-  `abbr` varchar(5) NOT NULL,
-  `for_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `brands`
---
-
-CREATE TABLE `brands` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `confirm_links`
+-- Struktur dari tabel `confirm_links`
 --
 
 CREATE TABLE `confirm_links` (
@@ -112,10 +55,18 @@ CREATE TABLE `confirm_links` (
   `for_order` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `confirm_links`
+--
+
+INSERT INTO `confirm_links` (`id`, `link`, `for_order`) VALUES
+(11, '284d1988e5fcd305dc79bd6c34dee565', 1234),
+(12, '93a92836936be5e5710f60615d871ec8', 1235);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cookie_law`
+-- Struktur dari tabel `cookie_law`
 --
 
 CREATE TABLE `cookie_law` (
@@ -126,7 +77,7 @@ CREATE TABLE `cookie_law` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cookie_law`
+-- Dumping data untuk tabel `cookie_law`
 --
 
 INSERT INTO `cookie_law` (`id`, `link`, `theme`, `visibility`) VALUES
@@ -135,7 +86,7 @@ INSERT INTO `cookie_law` (`id`, `link`, `theme`, `visibility`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cookie_law_translations`
+-- Struktur dari tabel `cookie_law_translations`
 --
 
 CREATE TABLE `cookie_law_translations` (
@@ -147,17 +98,10 @@ CREATE TABLE `cookie_law_translations` (
   `for_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cookie_law_translations`
---
-
-INSERT INTO `cookie_law_translations` (`id`, `message`, `button_text`, `learn_more`, `abbr`, `for_id`) VALUES
-(2, '', '', '', 'en', 1);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `discount_codes`
+-- Struktur dari tabel `discount_codes`
 --
 
 CREATE TABLE `discount_codes` (
@@ -171,16 +115,16 @@ CREATE TABLE `discount_codes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `discount_codes`
+-- Dumping data untuk tabel `discount_codes`
 --
 
 INSERT INTO `discount_codes` (`id`, `type`, `code`, `amount`, `valid_from_date`, `valid_to_date`, `status`) VALUES
-(1, 'percent', 'JH8RDS', '10', 1565974800, 1572454800, 0);
+(1, 'percent', 'JH8RDS', '10', 1565974800, 1572454800, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history`
+-- Struktur dari tabel `history`
 --
 
 CREATE TABLE `history` (
@@ -191,7 +135,7 @@ CREATE TABLE `history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `history`
+-- Dumping data untuk tabel `history`
 --
 
 INSERT INTO `history` (`id`, `activity`, `username`, `time`) VALUES
@@ -243,7 +187,7 @@ INSERT INTO `history` (`id`, `activity`, `username`, `time`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `keys`
+-- Struktur dari tabel `keys`
 --
 
 CREATE TABLE `keys` (
@@ -257,7 +201,7 @@ CREATE TABLE `keys` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `languages`
+-- Struktur dari tabel `languages`
 --
 
 CREATE TABLE `languages` (
@@ -270,17 +214,16 @@ CREATE TABLE `languages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `languages`
+-- Dumping data untuk tabel `languages`
 --
 
 INSERT INTO `languages` (`id`, `abbr`, `name`, `currency`, `currencyKey`, `flag`) VALUES
-(2, 'en', 'english', '$', 'USD', 'en.jpg'),
 (5, 'id', 'indonesia', 'Rp', 'IDR', 'flag-400.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Struktur dari tabel `orders`
 --
 
 CREATE TABLE `orders` (
@@ -299,10 +242,18 @@ CREATE TABLE `orders` (
   `discount_code` varchar(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_id`, `user_id`, `products`, `date`, `referrer`, `clean_referrer`, `payment_type`, `paypal_status`, `processed`, `viewed`, `confirmed`, `discount_code`) VALUES
+(12, 1235, 0, 'a:1:{i:0;a:2:{s:12:\"product_info\";a:24:{s:11:\"vendor_name\";N;s:9:\"vendor_id\";s:1:\"0\";s:2:\"id\";s:1:\"2\";s:6:\"folder\";s:10:\"1571753288\";s:5:\"image\";s:16:\"ir__soekarno.jpg\";s:4:\"time\";s:10:\"1571753332\";s:11:\"time_update\";s:10:\"1571781988\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"4\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:14:\"17 August 1945\";s:4:\"isbn\";s:10:\"1284128481\";s:9:\"publisher\";s:9:\"Pancasila\";s:6:\"weight\";s:1:\"1\";s:5:\"width\";s:1:\"3\";s:6:\"length\";s:1:\"4\";s:11:\"procurement\";s:1:\"3\";s:9:\"in_slider\";s:1:\"0\";s:3:\"url\";s:18:\"Presiden_pertama_2\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"1\";s:5:\"price\";s:6:\"100000\";}s:16:\"product_quantity\";s:1:\"1\";}}', 1573030134, 'Direct', 'Direct', 'Bank', NULL, 1, 1, 0, ''),
+(11, 1234, 1, 'a:2:{i:0;a:2:{s:12:\"product_info\";a:24:{s:11:\"vendor_name\";N;s:9:\"vendor_id\";s:1:\"0\";s:2:\"id\";s:1:\"2\";s:6:\"folder\";s:10:\"1571753288\";s:5:\"image\";s:16:\"ir__soekarno.jpg\";s:4:\"time\";s:10:\"1571753332\";s:11:\"time_update\";s:10:\"1571781988\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"5\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:14:\"17 August 1945\";s:4:\"isbn\";s:10:\"1284128481\";s:9:\"publisher\";s:9:\"Pancasila\";s:6:\"weight\";s:1:\"1\";s:5:\"width\";s:1:\"3\";s:6:\"length\";s:1:\"4\";s:11:\"procurement\";s:1:\"2\";s:9:\"in_slider\";s:1:\"0\";s:3:\"url\";s:18:\"Presiden_pertama_2\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"1\";s:5:\"price\";s:6:\"100000\";}s:16:\"product_quantity\";s:1:\"1\";}i:1;a:2:{s:12:\"product_info\";a:24:{s:11:\"vendor_name\";N;s:9:\"vendor_id\";s:1:\"0\";s:2:\"id\";s:1:\"3\";s:6:\"folder\";s:10:\"1571763694\";s:5:\"image\";s:21:\"President_Suharto.jpg\";s:4:\"time\";s:10:\"1571763770\";s:11:\"time_update\";s:10:\"1571782020\";s:10:\"visibility\";s:1:\"1\";s:14:\"shop_categorie\";s:1:\"2\";s:8:\"quantity\";s:1:\"2\";s:5:\"pages\";s:1:\"0\";s:11:\"datePublish\";s:16:\"20 November 2015\";s:4:\"isbn\";s:1:\"-\";s:9:\"publisher\";s:1:\"-\";s:6:\"weight\";s:1:\"0\";s:5:\"width\";s:1:\"0\";s:6:\"length\";s:1:\"0\";s:11:\"procurement\";s:1:\"1\";s:9:\"in_slider\";s:1:\"0\";s:3:\"url\";s:16:\"Presiden_kedua_3\";s:16:\"virtual_products\";N;s:8:\"brand_id\";N;s:8:\"position\";s:1:\"2\";s:5:\"price\";s:6:\"120000\";}s:16:\"product_quantity\";s:1:\"1\";}}', 1571993766, 'http://localhost/ekom/admin/history', 'localhost', 'cashOnDelivery', NULL, 0, 1, 0, '');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders_clients`
+-- Struktur dari tabel `orders_clients`
 --
 
 CREATE TABLE `orders_clients` (
@@ -318,10 +269,18 @@ CREATE TABLE `orders_clients` (
   `for_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `orders_clients`
+--
+
+INSERT INTO `orders_clients` (`id`, `first_name`, `last_name`, `email`, `phone`, `address`, `city`, `post_code`, `notes`, `for_id`) VALUES
+(11, 'ammar', 'amri', 'amaramri905@gmail.com', '085813238669', 'Kp. Cibitung tengah, RT/RW 002/001, Desa CibitungWetan, Kec. Pamijahan', 'Bogor', '16680', 'wrna ijo', 11),
+(12, 'Dewa', 'rizki', 'dewa@gmail.com', '08123456', 'palem residence 2', 'bandung', '123', '', 12);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Struktur dari tabel `products`
 --
 
 CREATE TABLE `products` (
@@ -341,7 +300,6 @@ CREATE TABLE `products` (
   `width` float DEFAULT NULL,
   `length` float DEFAULT NULL,
   `procurement` int(10) UNSIGNED NOT NULL,
-  `in_slider` tinyint(1) NOT NULL DEFAULT 0,
   `url` varchar(255) NOT NULL,
   `virtual_products` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `brand_id` int(5) DEFAULT NULL,
@@ -350,30 +308,29 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products`
+-- Dumping data untuk tabel `products`
 --
 
-INSERT INTO `products` (`id`, `folder`, `image`, `time`, `time_update`, `visibility`, `shop_categorie`, `quantity`, `pages`, `datePublish`, `isbn`, `publisher`, `weight`, `width`, `length`, `procurement`, `in_slider`, `url`, `virtual_products`, `brand_id`, `position`, `vendor_id`) VALUES
-(1, 1571661963, 'hos_cokro.jpg', 1571662043, 1571662895, 1, 1, 1, NULL, '-', '-', '-', NULL, NULL, NULL, 1, 0, 'Presiden_pertama_1', NULL, NULL, 1, 0),
-(2, 1571753288, 'ir__soekarno.jpg', 1571753332, 1571781988, 1, 2, 5, 0, '17 August 1945', '1284128481', 'Pancasila', 1, 3, 4, 2, 0, 'Presiden_pertama_2', NULL, NULL, 1, 0),
-(3, 1571763694, 'President_Suharto.jpg', 1571763770, 1571782020, 1, 2, 2, 0, '20 November 2015', '-', '-', 0, 0, 0, 1, 0, 'Presiden_kedua_3', NULL, NULL, 2, 0),
-(4, 1571782082, 'Foto_Presiden_Habibie_1998.jpg', 1571782205, 1571782224, 1, 2, 3, 120, '25 June 1936', '51351252', 'Pancasila', 0, 0, 0, 0, 0, 'Presiden_ketiga_4', NULL, NULL, 3, 0),
-(5, 1571782280, 'President_Abdurrahman_Wahid.jpg', 1571782325, 0, 1, 2, 6, 0, '05 June 1986', '513426453', 'Pancasila', 0, 0, 0, 0, 0, 'Presiden_keempat_5', NULL, NULL, 4, 0),
-(6, 1571782361, 'President_Megawati_Sukarnoputri_-_Indonesia.jpg', 1571782411, 0, 1, 2, 3, 0, '24 July 1986', '', '', 0, 0, 0, 0, 0, 'Presiden_kelima_6', NULL, NULL, 5, 0),
-(7, 1571782463, 'Presiden_Susilo_Bambang_Yudhoyono.png', 1571782501, 1571782609, 1, 2, 3, 0, 'Choose', '', '', 0, 0, 0, 0, 0, 'Presiden_keenam_7', NULL, NULL, 6, 0),
-(8, 1571782506, 'Joko-Widodo.jpg', 1571782593, 0, 1, 2, 2, 0, 'Choose', '', '', 0, 0, 0, 0, 0, 'Presiden_ketujuh_8', NULL, NULL, 7, 0);
+INSERT INTO `products` (`id`, `folder`, `image`, `time`, `time_update`, `visibility`, `shop_categorie`, `quantity`, `pages`, `datePublish`, `isbn`, `publisher`, `weight`, `width`, `length`, `procurement`, `url`, `virtual_products`, `brand_id`, `position`, `vendor_id`) VALUES
+(1, 1571661963, 'hos_cokro.jpg', 1571662043, 1571662895, 1, 1, 1, NULL, '-', '-', '-', NULL, NULL, NULL, 1, 'Presiden_pertama_1', NULL, NULL, 1, 0),
+(2, 1571753288, 'ir__soekarno.jpg', 1571753332, 1573599877, 1, 2, 4, 0, '17 August 1945', '1284128481', 'Pancasila', 1, 3, 4, 3, 'Presiden_pertama_2', NULL, NULL, 1, 0),
+(3, 1571763694, 'President_Suharto.jpg', 1571763770, 1571782020, 1, 2, 2, 0, '20 November 2015', '-', '-', 0, 0, 0, 1, 'Presiden_kedua_3', NULL, NULL, 2, 0),
+(4, 1571782082, 'Foto_Presiden_Habibie_1998.jpg', 1571782205, 1571782224, 1, 2, 3, 120, '25 June 1936', '51351252', 'Pancasila', 0, 0, 0, 0, 'Presiden_ketiga_4', NULL, NULL, 3, 0),
+(5, 1571782280, 'President_Abdurrahman_Wahid.jpg', 1571782325, 0, 1, 2, 6, 0, '05 June 1986', '513426453', 'Pancasila', 0, 0, 0, 0, 'Presiden_keempat_5', NULL, NULL, 4, 0),
+(6, 1571782361, 'President_Megawati_Sukarnoputri_-_Indonesia.jpg', 1571782411, 0, 1, 2, 3, 0, '24 July 1986', '', '', 0, 0, 0, 0, 'Presiden_kelima_6', NULL, NULL, 5, 0),
+(7, 1571782463, 'Presiden_Susilo_Bambang_Yudhoyono.png', 1571782501, 1571782609, 1, 2, 3, 0, 'Choose', '', '', 0, 0, 0, 0, 'Presiden_keenam_7', NULL, NULL, 6, 0),
+(8, 1571782506, 'Joko-Widodo.jpg', 1571782593, 0, 1, 2, 2, 0, 'Choose', '', '', 0, 0, 0, 0, 'Presiden_ketujuh_8', NULL, NULL, 7, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products_translations`
+-- Struktur dari tabel `products_translations`
 --
 
 CREATE TABLE `products_translations` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
-  `basic_description` text NOT NULL,
   `price` varchar(20) NOT NULL,
   `old_price` varchar(20) NOT NULL,
   `abbr` varchar(5) NOT NULL,
@@ -381,30 +338,22 @@ CREATE TABLE `products_translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products_translations`
+-- Dumping data untuk tabel `products_translations`
 --
 
-INSERT INTO `products_translations` (`id`, `title`, `description`, `basic_description`, `price`, `old_price`, `abbr`, `for_id`) VALUES
-(2, 'Presiden pertama', '<p>Presiden bukan bung karno melainkan cokroaniminoto penggagas perjoeangan republik indonesia</p>\r\n', '', '12', '', 'en', 1),
-(4, '', '', '', '', '', 'en', 2),
-(5, 'Presiden pertama', '<p>Presiden pertama indonesia</p>\r\n', '', '100000', '', 'id', 2),
-(6, '', '', '', '', '', 'en', 3),
-(7, 'Presiden kedua', '<p>Presiden kedua indonesia</p>\r\n', '', '120000', '', 'id', 3),
-(8, '', '', '', '', '', 'en', 4),
-(9, 'Presiden ketiga', '<p>Presiden ketiga indonesia</p>\r\n', '', '231000', '', 'id', 4),
-(10, '', '', '', '', '', 'en', 5),
-(11, 'Presiden keempat', '<p>Presiden keempat indonesia</p>\r\n', '', '52411', '', 'id', 5),
-(12, '', '', '', '', '', 'en', 6),
-(13, 'Presiden kelima', '<p>Presiden kelima indonesia</p>\r\n', '', '53112', '', 'id', 6),
-(14, '', '', '', '', '', 'en', 7),
-(15, 'Presiden keenam', '<p>Presiden keenam indonesia</p>\r\n', '', '84721', '', 'id', 7),
-(16, '', '', '', '', '', 'en', 8),
-(17, 'Presiden ketujuh', '<p>Presiden ketujuh indonesia</p>\r\n', '', '72631', '', 'id', 8);
+INSERT INTO `products_translations` (`id`, `title`, `description`, `price`, `old_price`, `abbr`, `for_id`) VALUES
+(5, 'Presiden pertama', '<p>Presiden pertama indonesia</p>\r\n', '100000', '', 'id', 2),
+(7, 'Presiden kedua', '<p>Presiden kedua indonesia</p>\r\n', '120000', '', 'id', 3),
+(9, 'Presiden ketiga', '<p>Presiden ketiga indonesia</p>\r\n', '231000', '', 'id', 4),
+(11, 'Presiden keempat', '<p>Presiden keempat indonesia</p>\r\n', '52411', '', 'id', 5),
+(13, 'Presiden kelima', '<p>Presiden kelima indonesia</p>\r\n', '53112', '', 'id', 6),
+(15, 'Presiden keenam', '<p>Presiden keenam indonesia</p>\r\n', '84721', '', 'id', 7),
+(17, 'Presiden ketujuh', '<p>Presiden ketujuh indonesia</p>\r\n', '72631', '', 'id', 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seo_pages`
+-- Struktur dari tabel `seo_pages`
 --
 
 CREATE TABLE `seo_pages` (
@@ -413,19 +362,18 @@ CREATE TABLE `seo_pages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `seo_pages`
+-- Dumping data untuk tabel `seo_pages`
 --
 
 INSERT INTO `seo_pages` (`id`, `name`) VALUES
 (1, 'home'),
 (2, 'checkout'),
-(3, 'contacts'),
-(4, 'blog');
+(3, 'contacts');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seo_pages_translations`
+-- Struktur dari tabel `seo_pages_translations`
 --
 
 CREATE TABLE `seo_pages_translations` (
@@ -439,7 +387,7 @@ CREATE TABLE `seo_pages_translations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shop_categories`
+-- Struktur dari tabel `shop_categories`
 --
 
 CREATE TABLE `shop_categories` (
@@ -449,7 +397,7 @@ CREATE TABLE `shop_categories` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `shop_categories`
+-- Dumping data untuk tabel `shop_categories`
 --
 
 INSERT INTO `shop_categories` (`id`, `sub_for`, `position`) VALUES
@@ -458,7 +406,7 @@ INSERT INTO `shop_categories` (`id`, `sub_for`, `position`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shop_categories_translations`
+-- Struktur dari tabel `shop_categories_translations`
 --
 
 CREATE TABLE `shop_categories_translations` (
@@ -469,17 +417,16 @@ CREATE TABLE `shop_categories_translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `shop_categories_translations`
+-- Dumping data untuk tabel `shop_categories_translations`
 --
 
 INSERT INTO `shop_categories_translations` (`id`, `name`, `abbr`, `for_id`) VALUES
-(4, '', 'en', 2),
 (5, 'Pejoeang', 'id', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subscribed`
+-- Struktur dari tabel `subscribed`
 --
 
 CREATE TABLE `subscribed` (
@@ -493,21 +440,7 @@ CREATE TABLE `subscribed` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `textual_pages_tanslations`
---
-
-CREATE TABLE `textual_pages_tanslations` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
-  `abbr` varchar(5) NOT NULL,
-  `for_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -520,16 +453,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `notify`, `last_login`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'your@email.com', 1, 1571894307);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'your@email.com', 1, 1574602266);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_public`
+-- Struktur dari tabel `users_public`
 --
 
 CREATE TABLE `users_public` (
@@ -542,17 +475,16 @@ CREATE TABLE `users_public` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users_public`
+-- Dumping data untuk tabel `users_public`
 --
 
 INSERT INTO `users_public` (`id`, `name`, `email`, `phone`, `password`, `created`) VALUES
-(1, 'Ammar amri', 'amaramri905@gmail.com', '085813238669', '827ccb0eea8a706c4c34a16891f84e7b', '2019-10-21 20:17:50'),
-(2, 'nadhif', 'nadhif@gmail.com', '085813238669', '827ccb0eea8a706c4c34a16891f84e7b', '2019-10-22 14:03:22');
+(8, 'jhon', 'jhon@email.com', '1234', '827ccb0eea8a706c4c34a16891f84e7b', '2019-11-24 16:13:42');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `value_store`
+-- Struktur dari tabel `value_store`
 --
 
 CREATE TABLE `value_store` (
@@ -562,7 +494,7 @@ CREATE TABLE `value_store` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `value_store`
+-- Dumping data untuk tabel `value_store`
 --
 
 INSERT INTO `value_store` (`id`, `thekey`, `value`) VALUES
@@ -588,7 +520,7 @@ INSERT INTO `value_store` (`id`, `thekey`, `value`) VALUES
 (21, 'paypal_sandbox', '0'),
 (22, 'publicDateAdded', '0'),
 (23, 'googleApi', ''),
-(24, 'template', 'redlabel'),
+(24, 'template', 'bukes'),
 (25, 'cashondelivery_visibility', '1'),
 (26, 'showBrands', '0'),
 (27, 'showInSlider', '0'),
@@ -598,410 +530,255 @@ INSERT INTO `value_store` (`id`, `thekey`, `value`) VALUES
 (31, 'moreInfoBtn', '0'),
 (32, 'newStyle', '');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `vendors`
---
-
-CREATE TABLE `vendors` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `url` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `vendors_orders`
---
-
-CREATE TABLE `vendors_orders` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `products` text NOT NULL,
-  `date` int(10) UNSIGNED NOT NULL,
-  `referrer` varchar(255) NOT NULL,
-  `clean_referrer` varchar(255) NOT NULL,
-  `payment_type` varchar(255) NOT NULL,
-  `paypal_status` varchar(10) DEFAULT NULL,
-  `processed` tinyint(1) NOT NULL DEFAULT 0,
-  `viewed` tinyint(1) NOT NULL DEFAULT 0,
-  `confirmed` tinyint(1) NOT NULL DEFAULT 0,
-  `discount_code` varchar(20) NOT NULL,
-  `vendor_id` int(10) UNSIGNED NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `vendors_orders_clients`
---
-
-CREATE TABLE `vendors_orders_clients` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `phone` varchar(30) NOT NULL,
-  `address` text NOT NULL,
-  `city` varchar(20) NOT NULL,
-  `post_code` varchar(10) NOT NULL,
-  `notes` text NOT NULL,
-  `for_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `active_pages`
---
-ALTER TABLE `active_pages`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `bank_accounts`
+-- Indeks untuk tabel `bank_accounts`
 --
 ALTER TABLE `bank_accounts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `blog_posts`
---
-ALTER TABLE `blog_posts`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `blog_translations`
---
-ALTER TABLE `blog_translations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `brands`
---
-ALTER TABLE `brands`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `confirm_links`
+-- Indeks untuk tabel `confirm_links`
 --
 ALTER TABLE `confirm_links`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cookie_law`
+-- Indeks untuk tabel `cookie_law`
 --
 ALTER TABLE `cookie_law`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cookie_law_translations`
+-- Indeks untuk tabel `cookie_law_translations`
 --
 ALTER TABLE `cookie_law_translations`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQUE` (`abbr`,`for_id`) USING BTREE;
 
 --
--- Indexes for table `discount_codes`
+-- Indeks untuk tabel `discount_codes`
 --
 ALTER TABLE `discount_codes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `history`
+-- Indeks untuk tabel `history`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `keys`
+-- Indeks untuk tabel `keys`
 --
 ALTER TABLE `keys`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `languages`
+-- Indeks untuk tabel `languages`
 --
 ALTER TABLE `languages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Indeks untuk tabel `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders_clients`
+-- Indeks untuk tabel `orders_clients`
 --
 ALTER TABLE `orders_clients`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Indeks untuk tabel `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products_translations`
+-- Indeks untuk tabel `products_translations`
 --
 ALTER TABLE `products_translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `seo_pages`
+-- Indeks untuk tabel `seo_pages`
 --
 ALTER TABLE `seo_pages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `seo_pages_translations`
+-- Indeks untuk tabel `seo_pages_translations`
 --
 ALTER TABLE `seo_pages_translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `shop_categories`
+-- Indeks untuk tabel `shop_categories`
 --
 ALTER TABLE `shop_categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `shop_categories_translations`
+-- Indeks untuk tabel `shop_categories_translations`
 --
 ALTER TABLE `shop_categories_translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `subscribed`
+-- Indeks untuk tabel `subscribed`
 --
 ALTER TABLE `subscribed`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `textual_pages_tanslations`
---
-ALTER TABLE `textual_pages_tanslations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users_public`
+-- Indeks untuk tabel `users_public`
 --
 ALTER TABLE `users_public`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `value_store`
+-- Indeks untuk tabel `value_store`
 --
 ALTER TABLE `value_store`
   ADD PRIMARY KEY (`id`),
   ADD KEY `key` (`thekey`);
 
 --
--- Indexes for table `vendors`
---
-ALTER TABLE `vendors`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique` (`email`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `vendors_orders`
---
-ALTER TABLE `vendors_orders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vendors_orders_clients`
---
-ALTER TABLE `vendors_orders_clients`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `active_pages`
---
-ALTER TABLE `active_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `bank_accounts`
+-- AUTO_INCREMENT untuk tabel `bank_accounts`
 --
 ALTER TABLE `bank_accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `blog_posts`
---
-ALTER TABLE `blog_posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `blog_translations`
---
-ALTER TABLE `blog_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `brands`
---
-ALTER TABLE `brands`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `confirm_links`
+-- AUTO_INCREMENT untuk tabel `confirm_links`
 --
 ALTER TABLE `confirm_links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `cookie_law`
+-- AUTO_INCREMENT untuk tabel `cookie_law`
 --
 ALTER TABLE `cookie_law`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cookie_law_translations`
+-- AUTO_INCREMENT untuk tabel `cookie_law_translations`
 --
 ALTER TABLE `cookie_law_translations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `discount_codes`
+-- AUTO_INCREMENT untuk tabel `discount_codes`
 --
 ALTER TABLE `discount_codes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `history`
+-- AUTO_INCREMENT untuk tabel `history`
 --
 ALTER TABLE `history`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT for table `keys`
+-- AUTO_INCREMENT untuk tabel `keys`
 --
 ALTER TABLE `keys`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `languages`
+-- AUTO_INCREMENT untuk tabel `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `orders_clients`
+-- AUTO_INCREMENT untuk tabel `orders_clients`
 --
 ALTER TABLE `orders_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT untuk tabel `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `products_translations`
+-- AUTO_INCREMENT untuk tabel `products_translations`
 --
 ALTER TABLE `products_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `seo_pages`
+-- AUTO_INCREMENT untuk tabel `seo_pages`
 --
 ALTER TABLE `seo_pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `seo_pages_translations`
+-- AUTO_INCREMENT untuk tabel `seo_pages_translations`
 --
 ALTER TABLE `seo_pages_translations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `shop_categories`
+-- AUTO_INCREMENT untuk tabel `shop_categories`
 --
 ALTER TABLE `shop_categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `shop_categories_translations`
+-- AUTO_INCREMENT untuk tabel `shop_categories_translations`
 --
 ALTER TABLE `shop_categories_translations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `subscribed`
+-- AUTO_INCREMENT untuk tabel `subscribed`
 --
 ALTER TABLE `subscribed`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `textual_pages_tanslations`
---
-ALTER TABLE `textual_pages_tanslations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `users_public`
+-- AUTO_INCREMENT untuk tabel `users_public`
 --
 ALTER TABLE `users_public`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `value_store`
+-- AUTO_INCREMENT untuk tabel `value_store`
 --
 ALTER TABLE `value_store`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT for table `vendors`
---
-ALTER TABLE `vendors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `vendors_orders`
---
-ALTER TABLE `vendors_orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `vendors_orders_clients`
---
-ALTER TABLE `vendors_orders_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
