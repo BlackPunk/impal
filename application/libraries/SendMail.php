@@ -18,14 +18,14 @@ class SendMail
         $this->mail->Port = 587;
         $this->mail->SMTPSecure = 'tls';
         $this->mail->SMTPAuth = true;
-        $this->mail->Username = "pentester@blackpunk.id";
-        $this->mail->Password = "ZI%{fg6s$*pr";
+        $this->mail->Username = "no-reply@blackpunk.id";
+        $this->mail->Password = "bukes2019";
         $this->mail->CharSet = 'UTF-8';
     }
 
     public function sendTo($toEmail, $recipientName, $subject, $msg)
     {
-        $this->mail->setFrom('pentester@blackpunk.id', 'Pentester');
+        $this->mail->setFrom('no-reply@blackpunk.id', 'Bukes');
         $this->mail->addAddress($toEmail, $recipientName);
         //$this->mail->isHTML(true); 
         $this->mail->Subject = $subject;
