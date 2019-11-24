@@ -124,7 +124,7 @@ class Loop
                                 <?php } ?>
                             </div>
                             <div class="price-discount <?= $article['old_price'] == '' ? 'invisible' : '' ?>">
-                                <?= lang('old_price') ?>: <span><?= $article['old_price'] != '' ? number_format($article['old_price'], 2) . CURRENCY : '' ?></span>
+                                <?= lang('old_price') ?>: <span><?= $article['old_price'] != '' ? CURRENCY . ' ' . number_format($article['old_price'], 2) : '' ?></span>
                             </div>
                             <?php if (self::$CI->load->get_var('publicQuantity') == 1) { ?>
                                 <div class="quantity">

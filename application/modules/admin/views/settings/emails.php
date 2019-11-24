@@ -1,10 +1,9 @@
-<h1><img src="<?= base_url('assets/imgs/email.png') ?>" class="header-img" style="margin-top:-3px;"> Subscribed</h1>
-<p>Here are all subscribed emails of users</p>
+<h1><img src="<?= base_url('assets/imgs/email.png') ?>" class="header-img" style="margin-top:-3px;">Email Subscriber</h1>
 <hr>
 <?php if ($this->session->flashdata('emailDeleted')) { ?>
     <hr>
     <div class="alert alert-info"><?= $this->session->flashdata('emailDeleted') ?></div>
-    <?php
+<?php
 }
 ?>
 <div class="table-responsive">
@@ -30,11 +29,13 @@
                         <td><?= date('Y.m.d / H.m.s', $email->time) ?></td>
                         <td><a href="?delete=<?= $email->id ?>" class="btn-xs btn-danger confirm-delete">Delete</a></td>
                     </tr>
-                    <?php
-                }
-            } else {
-                ?>
-                <tr><td colspan="5">No emails found!</td></tr>
+                <?php
+                    }
+                } else {
+                    ?>
+                <tr>
+                    <td colspan="5">No emails found!</td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>

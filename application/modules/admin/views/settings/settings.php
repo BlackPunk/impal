@@ -1,11 +1,11 @@
 <link href="<?= base_url('assets/css/bootstrap-toggle.min.css') ?>" rel="stylesheet">
 <script src="<?= base_url('assets/ckeditor/ckeditor.js') ?>"></script>
-<h1><img src="<?= base_url('assets/imgs/settings-page.png') ?>" class="header-img" style="margin-top:-3px;">Settings</h1>
+<h1><img src="<?= base_url('assets/imgs/settings-page.png') ?>" class="header-img" style="margin-top:-3px;">Pengaturan</h1>
 <hr>
 <div class="row">
     <div class="col-sm-6 col-md-4">
         <div class="panel panel-success col-h">
-            <div class="panel-heading">Site Logo</div>
+            <div class="panel-heading">Logo situs</div>
             <div class="panel-body">
                 <?php if ($this->session->flashdata('resultSiteLogoPublish')) { ?>
                     <div class="alert alert-info"><?= $this->session->flashdata('resultSiteLogoPublish') ?></div>
@@ -61,7 +61,7 @@
     </div>
     <div class="col-sm-6 col-md-4">
         <div class="panel panel-success col-h">
-            <div class="panel-heading">Contacts page</div>
+            <div class="panel-heading">Halaman kontak</div>
             <div class="panel-body">
                 <?php if ($this->session->flashdata('resultContactspage')) { ?>
                     <div class="alert alert-info"><?= $this->session->flashdata('resultContactspage') ?></div>
@@ -84,7 +84,7 @@
     </div>
     <div class="col-sm-6 col-md-4">
         <div class="panel panel-success col-h">
-            <div class="panel-heading">Contacts footer</div>
+            <div class="panel-heading">Footer kontak</div>
             <div class="panel-body">
                 <?php if ($this->session->flashdata('resultfooterContacts')) { ?>
                     <div class="alert alert-info"><?= $this->session->flashdata('resultfooterContacts') ?></div>
@@ -183,7 +183,7 @@
     </div>
     <div class="col-sm-6 col-md-4">
         <div class="panel panel-success col-h">
-            <div class="panel-heading">Send email from contact form to:</div>
+            <div class="panel-heading">Kirim email dari kontak form ke:</div>
             <div class="panel-body">
                 <?php if ($this->session->flashdata('resultEmailTo')) { ?>
                     <div class="alert alert-info"><?= $this->session->flashdata('resultEmailTo') ?></div>
@@ -203,7 +203,7 @@
     </div>
     <div class="col-sm-6 col-md-4">
         <div class="panel panel-success col-h">
-            <div class="panel-heading">Free Shipping for order equal or more than:</div>
+            <div class="panel-heading">Gratis pengiriman bagi orderan yang lebih dari sama dengan:</div>
             <div class="panel-body">
                 <?php if ($this->session->flashdata('shippingOrder')) { ?>
                     <div class="alert alert-info"><?= $this->session->flashdata('shippingOrder') ?></div>
@@ -307,23 +307,6 @@
     </div>
     <div class="col-sm-6 col-md-4">
         <div class="panel panel-success col-h">
-            <div class="panel-heading">Show brands</div>
-            <div class="panel-body">
-                <?php if ($this->session->flashdata('showBrands')) { ?>
-                    <div class="alert alert-info"><?= $this->session->flashdata('showBrands') ?></div>
-                <?php } ?>
-                <form method="POST" action="">
-                    <input type="hidden" name="showBrands" value="<?= $showBrands ?>">
-                    <input <?= $showBrands == 1 ? 'checked' : '' ?> data-toggle="toggle" data-for-field="showBrands" class="toggle-changer" type="checkbox">
-                    <button class="btn btn-default" value="" type="submit">
-                        Save
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="panel panel-success col-h">
             <div class="panel-heading">Cookie Law Notification</div>
             <div class="panel-body">
                 <?php if ($this->session->flashdata('cookieNotificator')) { ?>
@@ -378,23 +361,6 @@
                         </div>
                     </div>
                     <button class="btn btn-default" name="setCookieLaw" value="" type="submit">
-                        Save
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="panel panel-success col-h">
-            <div class="panel-heading">Virtual products</div>
-            <div class="panel-body">
-                <?php if ($this->session->flashdata('virtualProducts')) { ?>
-                    <div class="alert alert-info"><?= $this->session->flashdata('virtualProducts') ?></div>
-                <?php } ?>
-                <form method="POST" action="">
-                    <input type="hidden" name="virtualProducts" value="<?= $virtualProducts ?>">
-                    <input <?= $virtualProducts == 1 ? 'checked' : '' ?> data-toggle="toggle" data-for-field="virtualProducts" class="toggle-changer" type="checkbox">
-                    <button class="btn btn-default" value="" type="submit">
                         Save
                     </button>
                 </form>

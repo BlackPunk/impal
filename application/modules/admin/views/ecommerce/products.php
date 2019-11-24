@@ -15,7 +15,7 @@
     <?php
     }
     ?>
-    <h1><img src="<?= base_url('assets/imgs/products-img.png') ?>" class="header-img" style="margin-top:-2px;"> Products</h1>
+    <h1><img src="<?= base_url('assets/imgs/products-img.png') ?>" class="header-img" style="margin-top:-2px;">Daftar Produk</h1>
     <hr>
     <div class="row">
         <div class="col-xs-12">
@@ -23,7 +23,7 @@
                 <div class="row">
                     <form method="GET" id="searchProductsForm" action="">
                         <div class="col-sm-4">
-                            <label>Order:</label>
+                            <label>Urutan:</label>
                             <select name="order_by" class="form-control selectpicker change-products-form">
                                 <option <?= isset($_GET['order_by']) && $_GET['order_by'] == 'id=desc' ? 'selected=""' : '' ?> value="id=desc">Newest</option>
                                 <option <?= isset($_GET['order_by']) && $_GET['order_by'] == 'id=asc' ? 'selected=""' : '' ?> value="id=asc">Latest</option>
@@ -32,7 +32,7 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <label>Title:</label>
+                            <label>Judul:</label>
                             <div class="input-group">
                                 <input class="form-control" placeholder="Product Title" type="text" value="<?= isset($_GET['search_title']) ? $_GET['search_title'] : '' ?>" name="search_title">
                                 <span class="input-group-btn">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <label>Category:</label>
+                            <label>Kategori:</label>
                             <select name="category" class="form-control selectpicker change-products-form">
                                 <option value="">None</option>
                                 <?php foreach ($shop_categories as $key_cat => $shop_categorie) { ?>
@@ -70,12 +70,12 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Position</th>
-                                <th class="text-right">Action</th>
+                                <th>Cover buku</th>
+                                <th>Judul</th>
+                                <th>Harga</th>
+                                <th>Kuantitas</th>
+                                <th>Posisi</th>
+                                <th class="text-right">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -115,12 +115,11 @@
                                             <?= $row->quantity ?>
                                         </span>
                                     </td>
-                                    <td>No vendor</td>
                                     <td><?= $row->position ?></td>
                                     <td>
                                         <div class="pull-right">
                                             <a href="<?= base_url('admin/publish/' . $row->id) ?>" class="btn btn-info">Edit</a>
-                                            <a href="<?= base_url('admin/products?delete=' . $row->id) ?>" class="btn btn-danger confirm-delete">Delete</a>
+                                            <a href="<?= base_url('admin/products?delete=' . $row->id) ?>" class="btn btn-danger confirm-delete">Hapus</a>
                                         </div>
                                     </td>
                                 </tr>

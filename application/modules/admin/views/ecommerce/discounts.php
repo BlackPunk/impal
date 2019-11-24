@@ -1,6 +1,6 @@
 <link href="<?= base_url('assets/css/bootstrap-toggle.min.css') ?>" rel="stylesheet">
 <link href="<?= base_url('assets/css/bootstrap-datepicker.min.css') ?>" rel="stylesheet">
-<h1><img src="<?= base_url('assets/imgs/discount.png') ?>" class="header-img" style="margin-top:-3px;"> Discount Codes</h1>
+<h1><img src="<?= base_url('assets/imgs/discount.png') ?>" class="header-img" style="margin-top:-3px;">Kode Diskon</h1>
 <hr>
 <div style="margin-bottom: 20px;">
     <a href="javascript:void(0);" data-toggle="modal" data-target="#addDiscountCode" class="btn btn-primary pull-left">

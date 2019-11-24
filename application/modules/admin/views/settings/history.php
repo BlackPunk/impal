@@ -1,15 +1,15 @@
-<h1><img src="<?= base_url('assets/imgs/timer.png') ?>" class="header-img" style="margin-top:-3px;"> History</h1>
+<h1><img src="<?= base_url('assets/imgs/timer.png') ?>" class="header-img" style="margin-top:-3px;">Histori</h1>
 <hr>
 <?php if ($history === false) { ?>
-    <div class="alert alert-danger">History is stopped! Go to config.php and set <b>admin_history</b> to <b>TRUE</b></div>
+    <div class="alert alert-danger">Histori distop! Pergi ke config.php dan setel <b>admin_history</b> ke <b>TRUE</b></div>
 <?php } ?>
 <div class="table-responsive">
     <table class="table table-condensed table-bordered table-striped custab">
         <thead>
             <tr>
-                <th>User</th>
-                <th>Action</th>
-                <th>Time</th>
+                <th>Pengguna</th>
+                <th>Aksi</th>
+                <th>Waktu</th>
             </tr>
         </thead>
         <tbody>
@@ -20,13 +20,15 @@
                     <tr>
                         <td><?= $action->username ?></td>
                         <td><?= $action->activity ?></td>
-                        <td><?= date('Y.m.d / H.m.s', $action->time) ?></td>
+                        <td><?= date('H:i:sa / d-m-Y', $action->time) ?></td>
                     </tr>
-                    <?php
-                }
-            } else {
-                ?>
-                <tr><td colspan="3">No history found!</td></tr>
+                <?php
+                    }
+                } else {
+                    ?>
+                <tr>
+                    <td colspan="3">No history found!</td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>

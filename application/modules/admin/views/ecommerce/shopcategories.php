@@ -1,25 +1,25 @@
 <div id="languages">
-    <h1><img src="<?= base_url('assets/imgs/categories.jpg') ?>" class="header-img" style="margin-top:-2px;"> Shop Categories</h1> 
+    <h1><img src="<?= base_url('assets/imgs/categories.jpg') ?>" class="header-img" style="margin-top:-2px;">Daftar Kategori</h1>
     <hr>
     <?php if (validation_errors()) { ?>
         <div class="alert alert-danger"><?= validation_errors() ?></div>
         <hr>
-        <?php
+    <?php
     }
     if ($this->session->flashdata('result_add')) {
         ?>
         <div class="alert alert-success"><?= $this->session->flashdata('result_add') ?></div>
         <hr>
-        <?php
+    <?php
     }
     if ($this->session->flashdata('result_delete')) {
         ?>
         <div class="alert alert-success"><?= $this->session->flashdata('result_delete') ?></div>
         <hr>
-        <?php
+    <?php
     }
     ?>
-    <a href="javascript:void(0);" data-toggle="modal" data-target="#add_edit_articles" class="btn btn-primary btn-xs pull-right" style="margin-bottom:10px;"><b>+</b> Add shop categorie</a>
+    <a href="javascript:void(0);" data-toggle="modal" data-target="#add_edit_articles" class="btn btn-primary btn-xs pull-right" style="margin-bottom:10px;"><b>+</b>Tambah kategori</a>
     <div class="clearfix"></div>
     <?php
     if (!empty($shop_categories)) {
@@ -29,30 +29,30 @@
                 <thead>
                     <tr>
                         <th>#ID</th>
-                        <th>Name</th>
-                        <th>Subcategory for</th>
-                        <th>Position</th>
-                        <th class="text-center">Action</th>
+                        <th>Nama</th>
+                        <th>Subcategory untuk</th>
+                        <th>Posisi</th>
+                        <th class="text-center">Aksi </th>
                     </tr>
                 </thead>
                 <?php
-                $i = 1;
-                foreach ($shop_categories as $key_cat => $shop_categorie) {
-                    $catName = '';
-                    foreach ($shop_categorie['info'] as $ff) {
-                        $catName .= '<div>'
+                    $i = 1;
+                    foreach ($shop_categories as $key_cat => $shop_categorie) {
+                        $catName = '';
+                        foreach ($shop_categorie['info'] as $ff) {
+                            $catName .= '<div>'
                                 . '<a href="javascript:void(0);" class="editCategorie" data-indic="' . $i . '" data-for-id="' . $key_cat . '" data-abbr="' . $ff['abbr'] . '" data-toggle="tooltip" data-placement="top" title="Edit this categorie">'
                                 . '<i class="fa fa-pencil" aria-hidden="true"></i>'
                                 . '</a> '
                                 . '[' . $ff['abbr'] . ']<span id="indic-' . $i . '">' . $ff['name'] . '</span>'
                                 . '</div>';
-                        $i++;
-                    }
-                    ?>
+                            $i++;
+                        }
+                        ?>
                     <tr>
                         <td><?= $key_cat ?></td>
                         <td><?= $catName ?></td>
-                        <td> 
+                        <td>
                             <a href="javascript:void(0);" class="editCategorieSub" data-sub-for-id="<?= $key_cat ?>">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
@@ -67,19 +67,20 @@
                             <span id="position-<?= $key_cat ?>"><?= $shop_categorie['position'] ?></span>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/shopcategories/?delete=' . $key_cat) ?>" class="btn btn-danger btn-xs confirm-delete"><span class="glyphicon glyphicon-remove"></span> Del</a>
+                            <a href="<?= base_url('admin/shopcategories/?delete=' . $key_cat) ?>" class="btn btn-danger btn-xs confirm-delete"><span class="glyphicon glyphicon-remove"></span> Hapus</a>
                         </td>
                     </tr>
-                    <?php
-                }
-                ?>
+                <?php
+                    }
+                    ?>
             </table>
         </div>
-        <?php
+    <?php
         echo $links_pagination;
     } else {
         ?>
-        <div class="clearfix"></div><hr>
+        <div class="clearfix"></div>
+        <hr>
         <div class="alert alert-info">No shop categories found!</div>
     <?php } ?>
 
@@ -95,7 +96,8 @@
                     <div class="modal-body">
                         <?php foreach ($languages as $language) { ?>
                             <input type="hidden" name="translations[]" value="<?= $language->abbr ?>">
-                        <?php } foreach ($languages as $language) { ?>
+                        <?php }
+                        foreach ($languages as $language) { ?>
                             <div class="form-group">
                                 <label>Name (<?= $language->name ?><img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">)</label>
                                 <input type="text" name="categorie_name[]" class="form-control">

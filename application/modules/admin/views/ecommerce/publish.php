@@ -1,5 +1,5 @@
 <script src="<?= base_url('assets/ckeditor/ckeditor.js') ?>"></script>
-<h1><img src="<?= base_url('assets/imgs/shop-cart-add-icon.png') ?>" class="header-img" style="margin-top:-3px;"> Publish product</h1>
+<h1><img src="<?= base_url('assets/imgs/shop-cart-add-icon.png') ?>" class="header-img" style="margin-top:-3px;"> Terbitkan Produk</h1>
 <hr>
 <?php
 $timeNow = time();
@@ -20,15 +20,6 @@ if ($this->session->flashdata('result_publish')) {
 ?>
 <form method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" value="<?= isset($_POST['folder']) ? $_POST['folder'] : $timeNow ?>" name="folder">
-    <div class="form-group available-translations">
-        <b>Languages</b>
-        <?php foreach ($languages as $language) { ?>
-            <button type="button" data-locale-change="<?= $language->abbr ?>" id="smallflag" class="btn btn-default locale-change text-uppercase <?= $language->abbr == MY_DEFAULT_LANGUAGE_ABBR ? 'active' : '' ?>">
-                <img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">
-                <?= $language->abbr ?>
-            </button>
-        <?php } ?>
-    </div>
     <?php
     $i = 0;
     foreach ($languages as $language) {
@@ -36,11 +27,11 @@ if ($this->session->flashdata('result_publish')) {
         <div class="locale-container locale-container-<?= $language->abbr ?>" <?= $language->abbr == MY_DEFAULT_LANGUAGE_ABBR ? 'style="display:block;"' : '' ?>>
             <input type="hidden" name="translations[]" value="<?= $language->abbr ?>">
             <div class="form-group">
-                <label id="smallflag">Title (<?= $language->name ?><img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">)</label>
+                <label id="smallflag">Judul</label>
                 <input type="text" name="title[]" value="<?= $trans_load != null && isset($trans_load[$language->abbr]['title']) ? $trans_load[$language->abbr]['title'] : '' ?>" class="form-control">
             </div>
             <div class="form-group">
-                <label id="smallflag" for="description<?= $i ?>">Description (<?= $language->name ?><img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">)</label>
+                <label id="smallflag" for="description<?= $i ?>">Deskripsi</label>
                 <textarea name="description[]" id="description<?= $i ?>" rows="50" class="form-control"><?= $trans_load != null && isset($trans_load[$language->abbr]['description']) ? $trans_load[$language->abbr]['description'] : '' ?></textarea>
                 <script>
                     CKEDITOR.replace('description<?= $i ?>');
@@ -48,12 +39,12 @@ if ($this->session->flashdata('result_publish')) {
                 </script>
             </div>
             <div class="form-group for-shop">
-                <label id="smallflag">Price (<?= $language->name ?><img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">)</label>
-                <input type="text" name="price[]" placeholder="without currency at the end" value="<?= $trans_load != null && isset($trans_load[$language->abbr]['price']) ? $trans_load[$language->abbr]['price'] : '' ?>" class="form-control">
+                <label id="smallflag">Harga</label>
+                <input type="text" name="price[]" placeholder="contoh : 100000" value="<?= $trans_load != null && isset($trans_load[$language->abbr]['price']) ? $trans_load[$language->abbr]['price'] : '' ?>" class="form-control">
             </div>
             <div class="form-group for-shop">
-                <label id="smallflag">Old Price (<?= $language->name ?><img src="<?= base_url('attachments/lang_flags/' . $language->flag) ?>" alt="">)</label>
-                <input type="text" name="old_price[]" placeholder="without currency at the end" value="<?= $trans_load != null && isset($trans_load[$language->abbr]['old_price']) ? $trans_load[$language->abbr]['old_price'] : '' ?>" class="form-control">
+                <label id="smallflag">Harga lama</label>
+                <input type="text" name="old_price[]" placeholder="contoh : 100000" value="<?= $trans_load != null && isset($trans_load[$language->abbr]['old_price']) ? $trans_load[$language->abbr]['old_price'] : '' ?>" class="form-control">
             </div>
         </div>
     <?php
@@ -79,17 +70,17 @@ if ($this->session->flashdata('result_publish')) {
             }
         }
         ?>
-        <label for="userfile">Cover Image</label>
+        <label for="userfile">Cover buku</label>
         <input type="file" id="userfile" name="userfile">
     </div>
     <div class="form-group bordered-group">
         <div class="others-images-container">
             <?= $otherImgs ?>
         </div>
-        <a href="javascript:void(0);" data-toggle="modal" data-target="#modalMoreImages" class="btn btn-default">Upload more images</a>
+        <a href="javascript:void(0);" data-toggle="modal" data-target="#modalMoreImages" class="btn btn-default">Upload gambar tambahan</a>
     </div>
     <div class="form-group for-shop">
-        <label>Shop Categories</label>
+        <label>Kategori</label>
         <select class="selectpicker form-control show-tick show-menu-arrow" name="shop_categorie">
             <?php foreach ($shop_categories as $key_cat => $shop_categorie) { ?>
                 <option <?= isset($_POST['shop_categorie']) && $_POST['shop_categorie'] == $key_cat ? 'selected=""' : '' ?> value="<?= $key_cat ?>">
@@ -105,15 +96,15 @@ if ($this->session->flashdata('result_publish')) {
         </select>
     </div>
     <div class="form-group for-shop">
-        <label>Quantity</label>
+        <label>Kuantitas</label>
         <input type="text" placeholder="number" name="quantity" value="<?= @$_POST['quantity'] ?>" class="form-control" id="quantity">
     </div>
     <div class="form-group for-shop">
-        <label>number of pages</label>
+        <label>Jumlah halaman</label>
         <input type="text" placeholder="number" name="pages" value="<?= @$_POST['pages'] ?>" class="form-control" id="pages">
     </div>
     <div class="form-group for-shop">
-        <label>Date of Publication</label>
+        <label>Tanggal terbit</label>
         <input type="text" name="datePublish" value="<?= isset($_POST['datePublish']) ? @$_POST['datePublish'] : 'Choose'; ?>" class="form-control form_datetime " id="datePublish" readonly>
     </div>
     <div class="form-group for-shop">
@@ -121,44 +112,28 @@ if ($this->session->flashdata('result_publish')) {
         <input type="text" placeholder="ISBN" name="isbn" value="<?= @$_POST['isbn'] ?>" class="form-control" id="isbn">
     </div>
     <div class="form-group for-shop">
-        <label>Publisher</label>
+        <label>Penerbit</label>
         <input type="text" placeholder="Publisher" name="publisher" value="<?= @$_POST['publisher'] ?>" class="form-control" id="publisher">
     </div>
     <div class="form-group for-shop">
-        <label>Weight</label>
+        <label>Berat</label>
         <input type="text" placeholder="kg" name="weight" value="<?= @$_POST['weight'] ?>" class="form-control" id="weight">
     </div>
     <div class="form-group for-shop">
-        <label>Width</label>
+        <label>Lebar</label>
         <input type="text" placeholder="cm" name="width" value="<?= @$_POST['width'] ?>" class="form-control" id="width">
     </div>
     <div class="form-group for-shop">
-        <label>Length</label>
+        <label>Panjang</label>
         <input type="text" placeholder="cm" name="length" value="<?= @$_POST['length'] ?>" class="form-control" id="length">
     </div>
-    <?php if ($showBrands == 1) { ?>
-        <div class="form-group for-shop">
-            <label>Brand</label>
-            <select class="selectpicker" name="brand_id">
-                <?php foreach ($brands as $brand) { ?>
-                    <option <?= isset($_POST['brand_id']) && $_POST['brand_id'] == $brand['id'] ? 'selected' : '' ?> value="<?= $brand['id'] ?>"><?= $brand['name'] ?></option>
-                <?php } ?>
-            </select>
-        </div>
-    <?php }
-    if ($virtualProducts == 1) { ?>
-        <div class="form-group for-shop">
-            <label>Virtual Products <a href="javascript:void(0);" data-toggle="modal" data-target="#virtualProductsHelp"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-            <textarea class="form-control" name="virtual_products"><?= @$_POST['virtual_products'] ?></textarea>
-        </div>
-    <?php } ?>
     <div class="form-group for-shop">
-        <label>Position</label>
-        <input type="text" placeholder="Position number" name="position" value="<?= @$_POST['position'] ?>" class="form-control">
+        <label>Posisi</label>
+        <input type="text" placeholder="Nomor posisi" name="position" value="<?= @$_POST['position'] ?>" class="form-control">
     </div>
-    <button type="submit" name="submit" class="btn btn-lg btn-default btn-publish">Publish</button>
+    <button type="submit" name="submit" class="btn btn-lg btn-default btn-publish">Terbitkan</button>
     <?php if ($this->uri->segment(3) !== null) { ?>
-        <a href="<?= base_url('admin/products') ?>" class="btn btn-lg btn-default">Cancel</a>
+        <a href="<?= base_url('admin/products') ?>" class="btn btn-lg btn-default">Batal</a>
     <?php } ?>
 </form>
 <!-- Modal Upload More Images -->
@@ -181,24 +156,6 @@ if ($this->session->flashdata('result_publish')) {
                     <span class="finish-text">Finish</span>
                     <img src="<?= base_url('assets/imgs/load.gif') ?>" class="loadUploadOthers" alt="">
                 </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- virtualProductsHelp -->
-<div class="modal fade" id="virtualProductsHelp" tabindex="-1" role="dialog" aria-labelledby="virtualProductsHelp">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">What are virtual products?</h4>
-            </div>
-            <div class="modal-body">
-                Sometimes we want to sell products that are for electronic use such as books. In the box below, you can enter links to products that can be downloaded after you confirm the order as "Processed" through the "Orders" tab, an email will be sent to the customer entered with the entire text entered in the "virtual products" field.
-                We have left only the possibility to add links in this field because sometimes it is necessary that the electronic stuff you provide for downloading will be uploaded to other servers. If you want, you can add your files to "file manager" and take the links to them to add to the "virtual products"
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
