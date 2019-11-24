@@ -35,6 +35,7 @@ class Loop
                                 <a href="<?= LANG_URL . '/' . $cartItem['url'] ?>" class="item-info">
                                     <span><?= $cartItem['title'] ?></span>
                                     <span class="prices">
+                                        <span class="currency"><?= CURRENCY ?></span>
                                         <?=
                                                             $cartItem['num_added'] == 1 ? $cartItem['price'] : '<span class="num-added-single">'
                                                                 . $cartItem['num_added'] . '</span> x <span class="price-single">'
@@ -42,7 +43,6 @@ class Loop
                                                                 . $cartItem['sum_price'] . '</span>'
                                                         ?>
                                     </span>
-                                    <span class="currency"><?= CURRENCY ?></span>
                                 </a>
                             </div>
                         </div>
@@ -61,8 +61,8 @@ class Loop
                 <a class="go-checkout btn btn-default btn-sm" href="<?= LANG_URL . '/checkout' ?>">
                     <?=
                                     !empty($cartItems['array']) ? '<i class="fa fa-check"></i> '
-                                        . lang('checkout') . ' - <span class="finalSum">' . $cartItems['finalSum']
-                                        . '</span>' . CURRENCY : '<span class="no-for-pay">' . lang('no_for_pay') . '</span>'
+                                        . lang('checkout') . ' - <span class="finalSum">' . CURRENCY . ' ' . $cartItems['finalSum']
+                                        . '</span>' : '<span class="no-for-pay">' . lang('no_for_pay') . '</span>'
                                 ?>
                 </a>
             </li>
