@@ -13,27 +13,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <h1><?= lang('user_register') ?></h1><br>
                 <!-- Default form register -->
                 <form class="text-center border border-light p-5" method="POST" action="">
+                    <!-- name -->
                     <div class="form-group">
-                        <!-- name -->
-                        <input type="text" name="name" class="form-control" placeholder="Name">
+                        <input type="text" name="name" class="form-control" placeholder="Nama" value="<?= set_value('name') ?>">
+                        <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <!-- E-mail -->
                     <div class="form-group">
-                        <input type="text" class="form-control mb-4" placeholder="E-mail" name="email">
+                        <input type="text" class="form-control mb-4" placeholder="E-mail" name="email" value="<?= set_value('email') ?>">
+                        <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <!-- Phone number -->
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Phone number" name="phone">
+                        <input type="text" class="form-control" placeholder="No handphone" name="phone" value="<?= set_value('phone') ?>">
+                        <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <!-- Password -->
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" name="pass">
+                        <input type="password" class="form-control" placeholder="Kata sandi" name="pass">
+                        <?= form_error('pass', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <!-- Repeat Password -->
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password repeat" name="pass_repeat">
+                        <input type="password" class="form-control" placeholder="Ulangi kata sandi" name="pass_repeat">
+                        <?= form_error('pass_repeat', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <!-- Sign up button -->

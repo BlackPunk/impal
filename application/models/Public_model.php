@@ -41,32 +41,6 @@ class Public_model extends CI_Model
         return $query->result_array();
     }
 
-    // public function getLastBlogs()
-    // {
-    //     $this->db->limit(5);
-    //     $this->db->join('blog_translations', 'blog_translations.for_id = blog_posts.id', 'left');
-    //     $this->db->where('blog_translations.abbr', MY_LANGUAGE_ABBR);
-    //     $query = $this->db->select('blog_posts.id, blog_translations.title, blog_translations.description, blog_posts.url, blog_posts.time, blog_posts.image')->get('blog_posts');
-    //     return $query->result_array();
-    // }
-
-    public function getPosts($limit, $page, $search = null, $month = null)
-    {
-        if ($search !== null) {
-            $search = $this->db->escape_like_str($search);
-            $this->db->where("(blog_translations.title LIKE '%$search%' OR blog_translations.description LIKE '%$search%')");
-        }
-        if ($month !== null) {
-            $from = intval($month['from']);
-            $to = intval($month['to']);
-            $this->db->where("time BETWEEN $from AND $to");
-        }
-        $this->db->join('blog_translations', 'blog_translations.for_id = blog_posts.id', 'left');
-        $this->db->where('blog_translations.abbr', MY_LANGUAGE_ABBR);
-        $query = $this->db->select('blog_posts.id, blog_translations.title, blog_translations.description, blog_posts.url, blog_posts.time, blog_posts.image')->get('blog_posts', $limit, $page);
-        return $query->result_array();
-    }
-
     public function getProducts($limit = null, $start = null, $big_get)
     {
         if ($limit !== null && $start !== null) {
@@ -172,21 +146,6 @@ class Public_model extends CI_Model
         }
         return $arr;
     }
-
-    // public function getSeo($page)
-    // {
-    //     $this->db->where('page_type', $page);
-    //     $this->db->where('abbr', MY_LANGUAGE_ABBR);
-    //     $query = $this->db->get('seo_pages_translations');
-    //     $arr = array();
-    //     if ($query !== false) {
-    //         foreach ($query->result_array() as $row) {
-    //             $arr['title'] = $row['title'];
-    //             $arr['description'] = $row['description'];
-    //         }
-    //     }
-    //     return $arr;
-    // }
 
     public function getOneProduct($id)
     {
@@ -433,14 +392,6 @@ class Public_model extends CI_Model
             return $dynPages;
     }
 
-    public function getOnePage($page)
-    {
-        $this->db->join('textual_pages_tanslations', 'textual_pages_tanslations.for_id = active_pages.id', 'left');
-        $this->db->where('textual_pages_tanslations.abbr', MY_LANGUAGE_ABBR);
-        $this->db->where('active_pages.name', $page);
-        $result = $this->db->select('textual_pages_tanslations.description as content, textual_pages_tanslations.name')->get('active_pages');
-        return $result->row_array();
-    }
 
     public function changePaypalOrderStatus($order_id, $status)
     {
@@ -532,14 +483,20 @@ class Public_model extends CI_Model
 
     public function checkPublicUserIsValid($post)
     {
-        $this->db->where('email', $post['email']);
-        $this->db->where('password', md5($post['pass']));
-        $query = $this->db->get('users_public');
-        $result = $query->row_array();
-        if (empty($result)) {
-            return false;
+        $user = $this->db->get_where('users_public', ['email' => $post['email']])->row_array();
+
+        //jika user ada
+        if ($user) {
+            //cek password
+            if (md5($post['pass']) == $user['password']) {
+                return $user['id'];
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kata sandi salah!</div>');
+                return false;
+            }
         } else {
-            return $result['id'];
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email tidak terdaftar!</div>');
+            return false;
         }
     }
 

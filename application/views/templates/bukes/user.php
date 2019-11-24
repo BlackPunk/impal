@@ -11,15 +11,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="col-sm-4">
             <div class="loginmodal-container">
                 <h1><?= lang('my_acc') ?></h1><br>
+                <?= $this->session->flashdata('message'); ?>
                 <form method="POST" action="">
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" value="<?= $userInfo['name'] ?>" placeholder="Name">
+                        <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
                         <input type="text" name="phone" class="form-control" value="<?= $userInfo['phone'] ?>" placeholder="Phone">
+                        <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
                         <input type="text" name="email" class="form-control" value="<?= $userInfo['email'] ?>" placeholder="Email">
+                        <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
                         <input type="password" name="pass" class="form-control" placeholder="Password (kosongkan jika tidak mengganti)">

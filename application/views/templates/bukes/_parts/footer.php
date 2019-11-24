@@ -107,7 +107,7 @@
 echo $addedJs;
 if ($this->session->flashdata('userError')) {
     if (is_array($this->session->flashdata('userError'))) {
-        $usr_err = implode(' ', $this->session->flashdata('userError'));
+        $usr_err = implode(', ', $this->session->flashdata('userError'));
     } else {
         $usr_err = $this->session->flashdata('userError');
     }

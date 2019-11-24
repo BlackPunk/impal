@@ -13,6 +13,7 @@ class Users extends MY_Controller
     {
         parent::__construct();
         $this->load->library('email');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -22,51 +23,65 @@ class Users extends MY_Controller
 
     public function login()
     {
-        if (isset($_POST['login'])) {
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
+            'valid_email' => 'Email tidak valid!'
+        ]);
+        $this->form_validation->set_rules('pass', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $head = array();
+            $data = array();
+            $head['title'] = lang('user_login');
+            $head['description'] = lang('user_login');
+            $head['keywords'] = str_replace(" ", ",", $head['title']);
+            $this->render('login', $head, $data);
+        } else {
             $result = $this->Public_model->checkPublicUserIsValid($_POST);
             if ($result !== false) {
                 $_SESSION['logged_user'] = $result; //id of user
-                redirect(LANG_URL . '/checkout');
+                redirect(LANG_URL);
             } else {
-                $this->session->set_flashdata('userError', lang('wrong_user'));
+                redirect(LANG_URL . '/login');
             }
         }
-        $head = array();
-        $data = array();
-        $head['title'] = lang('user_login');
-        $head['description'] = lang('user_login');
-        $head['keywords'] = str_replace(" ", ",", $head['title']);
-        $this->render('login', $head, $data);
     }
 
     public function register()
     {
-        if (isset($_POST['signup'])) {
-            $result = $this->registerValidate();
-            if ($result == false) {
-                $this->session->set_flashdata('userError', $this->registerErrors);
-                redirect(LANG_URL . '/register');
-            } else {
-                $_SESSION['logged_user'] = $this->user_id; //id of user
-                redirect(LANG_URL . '/checkout');
-            }
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users_public.email]', [
+            'is_unique' => 'Email sudah terdaftar!',
+            'valid_email' => 'Email tidak valid!'
+        ]);
+        $this->form_validation->set_rules('phone', 'No handphone', 'required|trim');
+        $this->form_validation->set_rules('pass', 'Kata sandi', 'required|trim');
+        $this->form_validation->set_rules('pass_repeat', 'Kata sandi', 'required|trim|matches[pass]', [
+            'matches' => 'Kata sandi tidak sama!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $head = array();
+            $data = array();
+            $head['title'] = lang('user_register');
+            $head['description'] = lang('user_register');
+            $head['keywords'] = str_replace(" ", ",", $head['title']);
+            $this->render('signup', $head, $data);
+        } else {
+            $_SESSION['logged_user'] = $this->Public_model->registerUser($_POST); //id of user
+            redirect(LANG_URL);
         }
-        $head = array();
-        $data = array();
-        $head['title'] = lang('user_register');
-        $head['description'] = lang('user_register');
-        $head['keywords'] = str_replace(" ", ",", $head['title']);
-        $this->render('signup', $head, $data);
     }
 
     public function myaccount($page = 0)
     {
-        if (isset($_POST['update'])) {
-            $_POST['id'] = $_SESSION['logged_user'];
-            $count_emails = $this->Public_model->countPublicUsersWithEmail($_POST['email'], $_POST['id']);
-            if ($count_emails == 0) {
-                $this->Public_model->updateProfile($_POST);
-            }
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('phone', 'No handphone', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'valid_email' => 'Email tidak valid!',
+        ]);
+        if ($this->form_validation->run() != false) {
+            $this->Public_model->updateProfile($_POST);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Update Sukses!</div>');
             redirect(LANG_URL . '/myaccount');
         }
         if ($_SESSION['logged_user']) {
@@ -90,7 +105,7 @@ class Users extends MY_Controller
         unset($_SESSION['logged_user']);
         redirect(LANG_URL);
     }
-
+    // Untuk validasi manual
     private function registerValidate()
     {
         $errors = array();
